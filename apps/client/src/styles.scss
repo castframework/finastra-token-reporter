@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use '@finastra/angular-theme' as fds;
+@use '@finastra/angular-theme/base';
+
+@include fds.uxg-core();
+
+// Add components typography mixins inside this mixin
+@mixin app-typography($typography) {}
+
+// Add components theme mixins inside this mixin
+@mixin app-theme($theme) {
+  @include fds.uxg-material-theme($theme);
+}
+
+@include app-typography(fds.$typography);
+
+@include app-theme(fds.$light-theme);
+
+@media (prefers-color-scheme: dark) {
+  @include app-theme(fds.$dark-theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+uxg-global-nav {
+  h6 {
+    text-align: center;
+  }
+}

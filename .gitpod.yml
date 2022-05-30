@@ -1,0 +1,3 @@
+tasks:
+  - init: export NG_CLI_ANALYTICS=ci && npm ci
+    command: npm start
