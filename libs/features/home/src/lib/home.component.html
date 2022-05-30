@@ -1,13 +1,7 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<ng-container *ngIf="!loading">
+  <h2 class="uxg-h2">Welcome {{ whoami }}</h2>
+</ng-container>
 
-<style></style>
-
-<h1 class="uxg-h1">Welcome to your starter app 👋</h1>
-<h2 class="uxg-h2">Start Hacking !</h2>
+<ng-container *ngIf="loading">
+  <h6 class="uxg-h6">Loading...</h6>
+</ng-container>

@@ -9,7 +9,12 @@ export class ProxyConfigService implements ProxyModuleOptionsFactory {
   constructor(private configService: ConfigService) {}
 
   createModuleConfig(): ProxyModuleOptions {
-    const services = [];
+    const services = [
+      {
+        id: 'FIO_GQL_ENDPOINT',
+        url: this.configService.get('FIO_GQL_ENDPOINT'),
+      },
+    ];
 
     this.logger.log(services);
 

@@ -1,12 +1,9 @@
-<h1 align="center">Angular NestJS Starter</h1>
+<h1 align="center">Cast Challenge #3</h1>
 
 <p align="center">
-  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo" height="120"/>
-  <img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" height="120" alt="Nx Logo">
-  <img src="https://nestjs.com/img/logo-small.svg" height="120" alt="Nest Logo" />
+  <img src="https://v.fastcdn.co/u/0bc8903d/60196950-0-SG-Forge---Banner.jpg" alt="CAST Challenge" />
   <br>
-  <br>
-  <blockquote align="center"><h3>Angular & NestJS starter for enterprise-grade full-stack projects, built under a clean architecture that helps to scale and maintain a fast workflow.</h3></blockquote>
+  <blockquote align="center"><h3>Finastra's take on <a href="https://www.cast-challenge.com/">CAST Challenge</a> #3: Multi-Chain Security Token Reporter</h3></blockquote>
 </p>
 
 <p align="center">
@@ -46,71 +43,12 @@ npm run start:server
 
 <br>
 
-## 🌟 Features
-
-<h3>
-Client
-<img src="https://angular.io/assets/images/logos/angular/angular.svg" height="15" alt="Angular Logo" />
-</h3>
-
-- Strict mode
-- Lazy loading
-- Smart and pure components pattern
-- Self-contained components and encapsulated modules
-- Components types (e.g. component, features)
-- Amazing directory structure
-- Unit tests with Jest instead of Karma & Jasmine
-- Dark mode
-- Migration from TSLint to ESLint
-- GitHub Actions workflows for unit tests and build
-  <!-- - Dynamic titles and content meta tags -->
-  <!-- - PWA -->
-  <!-- - i18n -->
-
-<h3>
-Server
-<img src="https://nestjs.com/img/logo-small.svg" height="15" alt="Nest Logo" />
-</h3>
-
-- Smart Logging (human-readable or JSON if console is not interactive)
-- Proxy
-- Auth ready
-
-<br>
-
-## 🛠️ Make some initial tweaks
-
-- Change application title:
-
-  - Go to [apps/client/src/index.html](./apps/client/src/index.html) and inside the `title` tag, replace "AngularNestjsStarter" with your app name.\
-  - Go to [apps/client/src/app/app.component.ts](./apps/client/src/app/app.component.ts) and change the property `appName`
-
-- Change your favicon:
-
-  Go to [apps/client/src](./apps/client/src/favicon.ico) and replace the current `favicon.ico`
-
-- Start hacking:
-
-  - Go to [libs/features/home/src/lib/home.component.html](./libs/features/home/src/lib/home.component.html) and replace content with your own !
-
-- Enable auth:
-  - Go to [apps/server/src/main.ts](./apps/server/src/main.ts) and uncomment
-  - Go to [apps/server/src/app/app.module.ts](./apps/server/src/app/app.module.ts) and uncomment
-
-<br>
-
 ## Environement variables
 
-| Variable         | Default value                                     |
-| :--------------- | :------------------------------------------------ |
-| `OIDC_CLIENT_ID` |                                                   |
-| `CLIENT_SECRET`  |                                                   |
-| `SESSION_SECRET` | Generated uiid                                    |
-| `FFDC`           | `https://api.fusionfabric.cloud`                  |
-| `PORT`           | `3000`                                            |
-| `OIDC_ISSUER`    | `https://api.fusionfabric.cloud/login/v1/sandbox` |
-| `OIDC_SCOPES`    | `openid profile`                                  |
-| `OIDC_ORIGIN`    | `http://localhost:3000`                           |
+| Variable           | Default value                   |
+| :----------------- | :------------------------------ |
+| `PORT`             | `3000`                          |
+| `FIO_GQL_ENDPOINT` | `http://localhost:6664/graphql` |
 
 > Duplicate the `.env.template` and rename it to .env 👌🏼
 
@@ -165,13 +103,12 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
 <br>
 
-## Further help
+## Related links
 
-- [Finastra's Developer Portal](https://developer.fusionfabric.cloud/documentation)
-- [Finastra's Design System](https://design.fusionfabric.cloud)
-- [Angular Documentation](https://angular.io/docs)
-- [NestJS Documentation](https://docs.nestjs.com/)
-- [Nx Documentation](https://nx.dev/angular)
+- [CAST Challenge's Website](https://www.cast-challenge.com/)
+- [CAST Challenge's Discord](https://discord.gg/e3NYCEZcMp)
+- [CAST Framework's Website](https://www.cast-framework.com/)
+- [CAST Framework's Github](https://github.com/castframework/cast1)
 
 <br>
 

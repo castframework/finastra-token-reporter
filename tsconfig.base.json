@@ -15,7 +15,8 @@
     ],
     "lib": [
       "es2017",
-      "dom"
+      "dom",
+      "esnext.asynciterable"
     ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
@@ -27,7 +28,8 @@
       "@finastra/features/home": [
         "libs/features/home/src/index.ts"
       ]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "node_modules",

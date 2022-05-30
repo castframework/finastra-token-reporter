@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GlobalNavModule } from '@finastra/angular-components/global-nav';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app.routing.module';
     MatButtonModule,
     GlobalNavModule,
     AppRoutingModule,
+    GraphQLModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
