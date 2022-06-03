@@ -11,6 +11,7 @@
     "start:server": "nx serve server --port 9229",
     "start:prod": "node dist/apps/server/main.js",
     "build": "ng build",
+    "build:netlify": "ng build client --configuration=netlify",
     "build:prod": "ng build client --prod && ng build server --prod",
     "heroku-postbuild": "npm run build:prod",
     "test": "jest",
