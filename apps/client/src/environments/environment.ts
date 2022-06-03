@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  gqlEndpoint: '/proxy?serviceId=FIO_GQL_ENDPOINT',
 };
 
 /*
