@@ -14,9 +14,10 @@ async function bootstrap() {
 
   app.use(compression());
 
-  /* app.useGlobalGuards(app.get(TokenGuard));
-
-  setupSession(app, 'NAME_OF_YOUR_APP__CHANGE_IT'); */
+  const corsWhitelist = process.env.CORS_WHITELIST ? process.env.CORS_WHITELIST.split(',') : [];
+  app.enableCors({
+    origin: [...corsWhitelist],
+  });
 
   const port = process.env.PORT || 3000;
 
