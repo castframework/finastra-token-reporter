@@ -1,4 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
+import { GetEventsDto } from './dto/get-events.dto';
 import { NOTIFICATION_TYPE } from './events.model';
 import { EventsService } from './events.service';
 
@@ -8,8 +9,10 @@ export class EventsController {
 
   @Get('')
   getEvents(@Query('notification_type') notificationType: NOTIFICATION_TYPE): Promise<any> {
-    return this.eventsService.findAll({
-      'contractNotification.notificationName': notificationType,
-    });
+    const options: GetEventsDto = {};
+    if (notificationType) {
+      options['contractNotification.notificationName'] = notificationType;
+    }
+    return this.eventsService.findAll(options);
   }
 }
