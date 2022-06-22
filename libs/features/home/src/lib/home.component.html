@@ -1,7 +1,10 @@
-<ng-container *ngIf="!loading">
-  <h2 class="uxg-h2">Welcome {{ whoami }}</h2>
-</ng-container>
+<section>
+  <h2 class="uxg-h2">The multichain explorer</h2>
 
-<ng-container *ngIf="loading">
-  <h6 class="uxg-h6">Loading...</h6>
-</ng-container>
+  <finastra-global-search placeholder="Search by Adress / Txn Hash / Bond / Holder" (search)="onSearch($event)">
+  </finastra-global-search>
+
+  <div id='stars'></div>
+  <div id='stars2'></div>
+  <div id='stars3'></div>
+</section>

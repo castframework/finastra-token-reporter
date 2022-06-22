@@ -6,7 +6,7 @@ import { BondComponent } from './bond.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', pathMatch: 'full', component: BondComponent }]),
+    RouterModule.forChild([{ path: ':id', pathMatch: 'full', component: BondComponent }]),
   ],
   declarations: [BondComponent],
 })

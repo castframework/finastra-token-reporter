@@ -1,0 +1,319 @@
+@use 'sass:map';
+@use '@finastra/angular-theme' as fds;
+@use '@angular/material' as mat;
+@use '@angular/flex-layout/core/sass/layout-bp' as flex;
+
+@mixin theme($theme) {
+  $primary: map.get($theme, primary);
+  $is-dark-theme: map.get($theme, is-dark);
+  $accent: map.get($theme, accent);
+  $entity-logo-size: 50px;
+  $entity-logo-size-xs: 45px;
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+  $elevation-color: map.get($foreground, elevation);
+  $search-panel-border-radius: 22px;
+
+  finastra-global-search,
+  #finastra-global-search {
+    margin: auto;
+    color: fds.get-color-from-palette($foreground, text) !important;
+    span {
+      color: fds.get-color-from-palette($foreground, text) !important;
+    }
+
+    .search-container {
+      @include mat.typography-level(fds.$typography, body-1);
+      padding: fds.$uxg-spacing-1 fds.$uxg-spacing-4;
+      border: 1.5px solid fds.get-color-from-palette($primary, default);
+      border-radius: 28px;
+      background: fds.get-color-from-palette($background, background);
+      height: 45px;
+
+      .mat-form-field {
+        display: flex;
+        align-items: center;
+      }
+
+      input {
+        font-size: mat.font-size(fds.$typography, body-2);
+      }
+
+      .search-actions {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .dropdown-active {
+      background: fds.get-color-from-palette($background, background);
+      z-index: 100;
+      position: relative;
+      border-radius: 28px;
+    }
+  }
+
+  .finastra-global-search {
+    width: 600px;
+  }
+
+  .global-search-overlay,
+  #finastra-global-search {
+    .mat-form-field-wrapper {
+      padding: 0 !important;
+      flex-grow: 1;
+    }
+
+    .mat-form-field-infix {
+      border-top: 0;
+    }
+
+    .search-icon {
+      color: fds.get-color-from-palette($primary, default);
+    }
+
+    .hide {
+      visibility: hidden;
+    }
+  }
+
+  .global-search-overlay {
+    top: 70px !important;
+    max-height: calc(100vh - #{2 * fds.$uxg-spacing-5});
+    overflow: hidden;
+    background: fds.get-color-from-palette($background, background);
+    border-radius: $search-panel-border-radius;
+
+    .drop-down-search-panel {
+      min-height: 5rem;
+      width: 100%;
+      overflow-y: auto;
+      overflow-y: overlay;
+      padding: fds.$uxg-spacing-2 fds.$uxg-spacing-4;
+      box-sizing: border-box;
+      border-radius: $search-panel-border-radius;
+      border: 1.5px solid fds.get-color-from-palette($primary, default);
+      @include mat.typography-level(fds.$typography, body-1);
+    }
+
+    .search-actions {
+      display: flex;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .search-input {
+      &.mat-form-field {
+        display: flex;
+        align-items: center;
+      }
+
+      input {
+        position: absolute;
+        top: 1px;
+        z-index: 7;
+        font-size: mat.font-size(fds.$typography, body-2);
+      }
+
+      button {
+        margin-top: -(fds.$uxg-spacing-1);
+      }
+
+      .query-suggestion {
+        color: lighten(fds.$uxg-charcoal, 50);
+        z-index: 1;
+      }
+
+      .hidden {
+        visibility: hidden;
+      }
+    }
+
+    .query-container {
+      margin-top: fds.$uxg-spacing-2;
+    }
+
+    .title {
+      @include mat.typography-level(fds.$typography, subtitle-2);
+      padding: fds.$uxg-spacing-2 0;
+      margin: 0;
+    }
+
+    .uxg-text-primary {
+      color: fds.get-color-from-palette($primary, default) !important;
+      &:hover {
+        color: fds.get-color-from-palette($primary, default) !important;
+      }
+    }
+
+    .show-results {
+      span {
+        padding: fds.$uxg-spacing-2 0;
+      }
+
+      &:hover {
+        background: fds.get-color-from-palette($background, 'hover');
+        cursor: pointer;
+        border-radius: 4px;
+        margin-left: -(fds.$uxg-spacing-2);
+        margin-right: -(fds.$uxg-spacing-2);
+        padding: 0 fds.$uxg-spacing-2;
+      }
+    }
+
+    .no-results {
+      cursor: initial;
+      padding: fds.$uxg-spacing-2 0;
+    }
+
+    .store-entities {
+      flex-wrap: wrap;
+
+      .entity {
+        cursor: pointer;
+        text-decoration: none !important;
+        color: unset;
+        align-items: center;
+        width: 96px;
+        padding: fds.$uxg-spacing-2 fds.$uxg-spacing-4;
+
+        &:hover {
+          background: fds.get-color-from-palette($background, 'hover');
+          cursor: pointer;
+          border-radius: 4px;
+          color: rgb(var(--color-secondary));
+        }
+      }
+
+      .entity-logo {
+        border-radius: 50%;
+        width: $entity-logo-size;
+        height: $entity-logo-size;
+      }
+
+      .entity-logo-container {
+        width: $entity-logo-size;
+        height: $entity-logo-size;
+        border-radius: 50%;
+        background: fds.get-color-from-palette($background, card);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: fds.$uxg-spacing-1;
+        @include mat.elevation(2, $elevation-color);
+      }
+      .entity-name {
+        white-space: pre-wrap;
+        width: 90px;
+        padding-top: fds.$uxg-spacing-1;
+        text-align: center;
+      }
+    }
+
+    .finastra-searches {
+      position: relative;
+      padding: fds.$uxg-spacing-2;
+      @include mat.typography-level(fds.$typography, body-2);
+      margin-left: -(fds.$uxg-spacing-2);
+      margin-right: -(fds.$uxg-spacing-2);
+
+      > span {
+        display: flex;
+        align-items: center;
+      }
+
+      .finastra-searches-icon {
+        opacity: 0.75;
+      }
+
+      .delete-icon {
+        visibility: hidden;
+        position: absolute;
+        right: fds.$uxg-spacing-1;
+      }
+
+      .filter-results {
+        line-height: 16px;
+
+        .in-prefix {
+          font-weight: 300;
+          opacity: 0.75;
+        }
+      }
+
+      .term-result {
+        font-weight: 500;
+
+        .highlighted {
+          font-weight: normal;
+          background: none !important;
+        }
+      }
+
+      &:hover {
+        background: fds.get-color-from-palette($background, 'hover');
+        cursor: pointer;
+        border-radius: 4px;
+
+        .delete-icon {
+          visibility: visible;
+        }
+
+        .filter-icon {
+          width: 16px !important;
+          height: 16px !important;
+          font-size: 16px !important;
+          line-height: 16px !important;
+        }
+      }
+    }
+  }
+
+  @include flex.layout-bp(lt-lg) {
+    .finastra-global-search {
+      width: 500px;
+    }
+  }
+
+  @include flex.layout-bp(lt-md) {
+    .finastra-logo {
+      display: none !important;
+    }
+    .global-search-overlay .finastra-searches .delete-icon {
+      visibility: visible;
+    }
+  }
+
+  @include flex.layout-bp(xs) {
+    .finastra-global-search {
+      width: calc(100% - #{2 * fds.$uxg-spacing-3});
+    }
+
+    .store-entities {
+      .entity-logo {
+        width: $entity-logo-size-xs;
+        height: $entity-logo-size-xs;
+      }
+
+      .entity-logo-container {
+        width: $entity-logo-size-xs;
+        height: $entity-logo-size-xs;
+        border-radius: 50%;
+      }
+
+      .entity-name {
+        padding: 0;
+      }
+    }
+
+    .drop-down-search-panel {
+      padding: fds.$uxg-spacing-2 fds.$uxg-spacing-3 fds.$uxg-spacing-3 fds.$uxg-spacing-3;
+    }
+  }
+
+  @include flex.layout-bp(gt-lg) {
+    .finastra-global-search {
+      width: 700px;
+    }
+  }
+}

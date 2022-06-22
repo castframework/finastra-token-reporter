@@ -1,0 +1,78 @@
+<!-- <mat-form-field floatLabel="never" class="example-full-width" appearance="fill">
+    <mat-icon color="primary" matPrefix>search</mat-icon>
+    <input type="search" placeholder="Search..." matInput />
+</mat-form-field> -->
+
+<div #finastraGlobalSearch class="finastra-global-search" id="finastra-global-search"
+    [class.dropdown-active]="showPanel" [ngClass.lt-lg]="'lt-lg'">
+    <div class="search-container full-width" [class.hide]="showPanel" fxLayout>
+        <mat-form-field floatLabel="never" dense appearance="none" class="full-width" (click)="displaySearchPanel()">
+            <input matInput type="search" [placeholder]="placeholder" autocomplete="off" aria-label="Search bar"
+                (input)="term$.next($any($event.target).value); displaySearchPanel()"
+                (keydown.enter)="onSelect(query)" />
+        </mat-form-field>
+        <div class="search-actions">
+            <button mat-button matSuffix mat-icon-button aria-label="Clear input" [ngClass]="{ hide: !query }"
+                (click)="clearInput()" dense>
+                <mat-icon dense>close</mat-icon>
+            </button>
+            <button mat-button matSuffix mat-icon-button aria-label="Search input" (click)="onSelect(query)" dense>
+                <mat-icon class="search-icon" dense>search</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-template #searchPanel>
+    <div class="drop-down-search-panel">
+        <mat-form-field floatLabel="never" fxLayout fxLayoutAlign="space-between center" dense appearance="none"
+            class="search-input full-width">
+            <input matInput type="search" [placeholder]="placeholder" (input)="term$.next($any($event.target).value)"
+                autocomplete="off" aria-label="Search bar" (keydown.enter)="onSelect(query)" (keydown.esc)="onEsc()"
+                cdkTrapFocus cdkTrapFocusAutoCapture />
+
+            <!-- <input *ngIf="querySuggestion" matInput type="text" class="query-suggestion" disabled [value]="querySuggestion" /> -->
+            <div class="search-actions" matSuffix>
+                <button mat-button mat-icon-button aria-label="Clear input" (click)="clearInput()"
+                    [ngClass]="{ hide: !query }" dense>
+                    <mat-icon dense>close</mat-icon>
+                </button>
+                <button mat-button matSuffix mat-icon-button aria-label="Search input" (click)="onSelect(query)" dense>
+                    <mat-icon class="search-icon" dense>search</mat-icon>
+                </button>
+            </div>
+        </mat-form-field>
+
+        <mat-divider class="mt-2"></mat-divider>
+
+        <div [ngClass]="{ 'query-container': query }" fxLayout="column">
+            <ng-container *ngIf="searchService.recentSearches$ | async as recentSearches">
+                <h4 *ngIf="recentSearches?.length" class="title">Recent searches</h4>
+                <ng-container *ngFor="let term of recentSearches">
+                    <a class="finastra-searches" fxLayout fxLayoutAlign="start center" (click)="onSelect(term)">
+                        <span>
+                            <mat-icon class="finastra-searches-icon mr-3" dense>history</mat-icon>
+                            <div [ngClass]="{ 'term-result': !!query }">{{term}}</div>
+                        </span>
+
+                        <button (click)="onRemoveTerm(term)" mat-icon-button class="delete-icon" dense>
+                            <mat-icon dense>clear</mat-icon>
+                        </button>
+                    </a>
+                </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="query">
+                <div *ngIf="resultsCount" fxLayout fxLayoutAlign="space-between center" class="show-results"
+                    (click)="onSelect(query)">
+                    <span class="uxg-subtitle-2">Show {{ resultsCount }} {{ resultsCount > 1 ? 'results' : 'result' }}
+                        for
+                        <span class="uxg-text-primary">{{ query }}</span></span>
+                    <mat-icon>chevron_right</mat-icon>
+                </div>
+                <span *ngIf="!resultsCount" class="uxg-subtitle-2 no-results">No results for <span
+                        class="uxg-text-primary">{{ query }}</span></span>
+            </ng-container>
+        </div>
+    </div>
+</ng-template>

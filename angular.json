@@ -15,6 +15,32 @@
         }
       }
     },
+    "cdk-global-search": {
+      "projectType": "library",
+      "root": "libs/cdk/global-search",
+      "sourceRoot": "libs/cdk/global-search/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk/global-search"],
+          "options": {
+            "jestConfig": "libs/cdk/global-search/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cdk/global-search/src/**/*.ts",
+              "libs/cdk/global-search/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "client": {
       "projectType": "application",
       "root": "apps/client",

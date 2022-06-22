@@ -33,4 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.querySubscription.unsubscribe();
   }
+
+  onSearch(term: string) {
+    console.log(term);
+  }
+
+  ngAfterViewInit() {}
 }
