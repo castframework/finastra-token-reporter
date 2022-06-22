@@ -65,7 +65,6 @@
                 }
               ]
             },
-
             "netlify": {
               "fileReplacements": [
                 {
@@ -128,6 +127,58 @@
           }
         }
       }
+    },
+    "features-bond": {
+      "projectType": "library",
+      "root": "libs/features/bond",
+      "sourceRoot": "libs/features/bond/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/bond"],
+          "options": {
+            "jestConfig": "libs/features/bond/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/bond/src/**/*.ts",
+              "libs/features/bond/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "features-holder": {
+      "projectType": "library",
+      "root": "libs/features/holder",
+      "sourceRoot": "libs/features/holder/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/holder"],
+          "options": {
+            "jestConfig": "libs/features/holder/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/holder/src/**/*.ts",
+              "libs/features/holder/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     },
     "features-home": {
       "projectType": "library",
