@@ -64,6 +64,10 @@
             }
           },
           "configurations": {
+            "development": {
+              "sourceMap": true,
+              "optimization": false
+            },
             "production": {
               "fileReplacements": [
                 {
