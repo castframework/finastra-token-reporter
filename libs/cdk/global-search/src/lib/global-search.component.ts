@@ -101,8 +101,14 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
     this.searchService.updateRecentSearches();
   }
 
-  onSelect(term: any, filterKey?: string) {
+  onKeyDown(term: any, filterKey?: string) {
     this.term$.next(term);
+  }
+
+  onSelect(term: string) {
+    this.query = term;
+    this.results = undefined;
+    this.search.emit(term);
   }
 
   onEsc() {
@@ -111,8 +117,10 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   }
 
   clearInput() {
+    this.query = '';
     this.term$.next('');
     this.loading = false;
+    this.results = undefined;
   }
 
   onRemoveTerm(term: any) {

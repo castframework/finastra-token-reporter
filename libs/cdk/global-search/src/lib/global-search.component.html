@@ -9,7 +9,7 @@
         <mat-form-field floatLabel="never" dense appearance="none" class="full-width" (click)="displaySearchPanel()">
             <input matInput type="search" [placeholder]="placeholder" autocomplete="off" aria-label="Search bar"
                 (input)="term$.next($any($event.target).value); displaySearchPanel()" [(ngModel)]="query"
-                [disabled]="loading" (keydown.enter)="onSelect(query)" />
+                [disabled]="loading" (keydown.enter)="onKeyDown(query)" />
         </mat-form-field>
         <div class="search-actions">
             <button mat-button matSuffix mat-icon-button aria-label="Clear input" [ngClass]="{ hide: !query }"
@@ -31,7 +31,7 @@
             class="search-input full-width">
             <input matInput type="search" [placeholder]="placeholder" [(ngModel)]="query"
                 (input)="term$.next($any($event.target).value)" autocomplete="off" aria-label="Search bar"
-                (keydown.enter)="onSelect(query)" [disabled]="loading" (keydown.esc)="onEsc()" cdkTrapFocus
+                (keydown.enter)="onKeyDown(query)" [disabled]="loading" (keydown.esc)="onEsc()" cdkTrapFocus
                 cdkTrapFocusAutoCapture />
 
             <!-- <input *ngIf="querySuggestion" matInput type="text" class="query-suggestion" disabled [value]="querySuggestion" /> -->
