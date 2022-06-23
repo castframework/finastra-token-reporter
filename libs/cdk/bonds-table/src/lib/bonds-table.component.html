@@ -1,0 +1,57 @@
+<ng-container *ngIf="dataSource; else loading">
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Instrument Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isinCode">
+      <th mat-header-cell *matHeaderCellDef> ISIN </th>
+      <td mat-cell *matCellDef="let element"> {{element.isinCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="issuer">
+      <th mat-header-cell *matHeaderCellDef> Issuer </th>
+      <td mat-cell *matCellDef="let element"> {{element.issuer}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="maturityDate">
+      <th mat-header-cell *matHeaderCellDef> Maturity </th>
+      <td mat-cell *matCellDef="let element"> {{element.maturityDate*1000 | date: 'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="interestRateInBips">
+      <th mat-header-cell *matHeaderCellDef> Rate </th>
+      <td mat-cell *matCellDef="let element"> {{element.interestRateInBips}} </td>
+    </ng-container>
+
+    <!-- 'isinCode', 'issuer', 'maturityDate', 'interestRateInBips' -->
+
+    <!-- <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</ng-container>
+
+<ng-template #loading>
+
+  <div class="loader">
+    <svg width="78" height="65" viewBox="-5 -8 175 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="track"
+        d="M75.3004 37C56.3004 37 53.8004 0.999998 33.8004 1C-18.6996 0.999991 -0.19968 131.214 33.8004 138.5C67.8004 145.786 175.3 94 166.3 55.5C157.3 17 94.3004 37 75.3004 37Z"
+        stroke-width="10" />
+      <path id="roller"
+        d="M75.3004 37C56.3004 37 53.8004 0.999998 33.8004 1C-18.6996 0.999991 -0.19968 131.214 33.8004 138.5C67.8004 145.786 175.3 94 166.3 55.5C157.3 17 94.3004 37 75.3004 37Z"
+        stroke="#694ED6" stroke-width="14" stroke-linecap="round" stroke-dasharray="30%, 260%" stroke-dashoffset="0" />
+    </svg>
+  </div>
+
+</ng-template>

@@ -9,11 +9,43 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api-interfaces/**/*.ts"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         }
       }
+    },
+    "cdk-bonds-table": {
+      "projectType": "library",
+      "root": "libs/cdk/bonds-table",
+      "sourceRoot": "libs/cdk/bonds-table/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/cdk/bonds-table"
+          ],
+          "options": {
+            "jestConfig": "libs/cdk/bonds-table/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cdk/bonds-table/src/**/*.ts",
+              "libs/cdk/bonds-table/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     },
     "cdk-global-search": {
       "projectType": "library",
@@ -23,7 +55,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/cdk/global-search"],
+          "outputs": [
+            "coverage/libs/cdk/global-search"
+          ],
           "options": {
             "jestConfig": "libs/cdk/global-search/jest.config.js",
             "passWithNoTests": true
@@ -56,12 +90,26 @@
             "polyfills": "apps/client/src/polyfills.ts",
             "tsConfig": "apps/client/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
-            "styles": ["apps/client/src/styles.scss"],
+            "assets": [
+              "apps/client/src/favicon.ico",
+              "apps/client/src/assets"
+            ],
+            "styles": [
+              "apps/client/src/styles.scss"
+            ],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": ["node_modules"]
-            }
+              "includePaths": [
+                "node_modules"
+              ]
+            },
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true,
+            "preserveSymlinks": true
           },
           "configurations": {
             "development": {
@@ -144,13 +192,20 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/client/src/**/*.ts", "apps/client/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/client/src/**/*.ts",
+              "apps/client/src/**/*.html"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/client"],
+          "outputs": [
+            "coverage/apps/client"
+          ],
           "options": {
             "jestConfig": "apps/client/jest.config.js",
             "passWithNoTests": true
@@ -166,7 +221,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/features/bond"],
+          "outputs": [
+            "coverage/libs/features/bond"
+          ],
           "options": {
             "jestConfig": "libs/features/bond/jest.config.js",
             "passWithNoTests": true
@@ -192,7 +249,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/features/holder"],
+          "outputs": [
+            "coverage/libs/features/holder"
+          ],
           "options": {
             "jestConfig": "libs/features/holder/jest.config.js",
             "passWithNoTests": true
@@ -224,11 +283,15 @@
               "libs/features/home/src/**/*.html"
             ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/features/home"],
+          "outputs": [
+            "coverage/libs/features/home"
+          ],
           "options": {
             "jestConfig": "libs/features/home/jest.config.js",
             "passWithNoTests": true
@@ -243,12 +306,16 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/server",
             "main": "apps/server/src/main.ts",
             "tsConfig": "apps/server/tsconfig.app.json",
-            "assets": ["apps/server/src/assets"]
+            "assets": [
+              "apps/server/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -273,13 +340,19 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/server/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/server/**/*.ts"
+            ]
           },
-          "outputs": ["{options.outputFile}"]
+          "outputs": [
+            "{options.outputFile}"
+          ]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/server"],
+          "outputs": [
+            "coverage/apps/server"
+          ],
           "options": {
             "jestConfig": "apps/server/jest.config.js",
             "passWithNoTests": true
