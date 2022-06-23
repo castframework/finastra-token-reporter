@@ -15,6 +15,7 @@ export class GlobalSearchService {
 
   persistTerm(term: string) {
     let recentSearches = this.getRecentSearches();
+    if (recentSearches.includes(term)) return;
     if (recentSearches.length >= this.recentSearchesLimit) {
       recentSearches.pop();
     }

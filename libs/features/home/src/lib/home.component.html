@@ -1,7 +1,8 @@
 <section>
   <h2 class="uxg-h2">The multichain explorer</h2>
 
-  <finastra-global-search placeholder="Search by Adress / Txn Hash / Bond / Holder" (search)="onSearch($event)">
+  <finastra-global-search placeholder="Search by Adress / Txn Hash / Bond / Holder" (search)="onSearch($event)"
+    (resultClick)="onResultClick($event)" [loading]="searching" [results]="results">
   </finastra-global-search>
 
   <div id='stars'></div>

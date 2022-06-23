@@ -43,6 +43,10 @@
         display: flex;
         align-items: center;
       }
+
+      mat-spinner {
+        margin-right: -20px;
+      }
     }
 
     .dropdown-active {
@@ -147,8 +151,24 @@
     }
 
     .show-results {
+      background: rgba(var(--color-primary), 0.04);
+      border-radius: 4px;
+      margin-left: -8px;
+      margin-right: -8px;
+      padding: 0 8px;
+
       span {
         padding: fds.$uxg-spacing-2 0;
+      }
+
+      .results__query {
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0;
+        vertical-align: bottom;
+        display: inline-block;
       }
 
       &:hover {

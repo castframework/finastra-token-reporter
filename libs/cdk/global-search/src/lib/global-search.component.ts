@@ -12,7 +12,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { distinctUntilChanged, ReplaySubject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, ReplaySubject, tap } from 'rxjs';
 import { GlobalSearchService } from './global-search.service';
 
 @Component({
@@ -22,12 +22,14 @@ import { GlobalSearchService } from './global-search.service';
 export class GlobalSearchComponent implements OnInit, AfterViewInit {
   @Input() query: string;
   @Input() placeholder: string;
-  @Input() resultsCount: number;
+  @Input() results: any;
+  @Input() loading = false;
 
   showPanel = false;
   term$ = new ReplaySubject<string>(1);
 
   @Output() search = new EventEmitter<string>();
+  @Output() resultClick = new EventEmitter();
 
   @ViewChild('searchPanel') searchPanel: TemplateRef<any>;
   @ViewChild('finastraGlobalSearch') searchContainer: ElementRef;
@@ -41,10 +43,20 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.term$.pipe(distinctUntilChanged()).subscribe((query) => {
-      this.searchService.persistTerm(query);
-      this.search.emit(query);
-    });
+    this.term$
+      .pipe(
+        distinctUntilChanged(),
+        tap((query) => {
+          this.query = query;
+          this.results = undefined;
+        }),
+        debounceTime(500),
+        filter((t) => t !== '')
+      )
+      .subscribe((query) => {
+        this.searchService.persistTerm(query);
+        this.search.emit(query);
+      });
   }
 
   ngAfterViewInit(): void {
@@ -91,7 +103,6 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
   onSelect(term: any, filterKey?: string) {
     this.term$.next(term);
-    this.closeOverlay();
   }
 
   onEsc() {
@@ -101,9 +112,15 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
   clearInput() {
     this.term$.next('');
+    this.loading = false;
   }
 
   onRemoveTerm(term: any) {
     this.searchService.removeSearchTerm(term);
+  }
+
+  onResultClick(query: string, results: any) {
+    this.resultClick.emit({ query, results });
+    this.closeOverlay();
   }
 }
