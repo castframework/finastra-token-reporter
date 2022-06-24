@@ -35,7 +35,7 @@
 
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">First coupon date:</h6>
-                        <div>{{instrumentDetails.firstCouponDate}}</div>
+                        <div>{{instrumentDetails.firstCouponDate * 1000 | date:'longDate'}}</div>
                     </div>
 
                     <div class="details">
@@ -60,7 +60,7 @@
 
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">Start date:</h6>
-                        <div>{{instrumentDetails.startDate}}</div>
+                        <div>{{instrumentDetails.startDate * 1000 | date:'longDate'}}</div>
                     </div>
 
                     <div class="details">
@@ -70,7 +70,7 @@
 
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">Maturity date:</h6>
-                        <div>{{instrumentDetails.maturityDate}}</div>
+                        <div>{{instrumentDetails.maturityDate * 1000 | date:'longDate'}}</div>
                     </div>
                 </div>
             </div>
