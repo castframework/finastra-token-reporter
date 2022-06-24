@@ -23,9 +23,9 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     private apollo: Apollo,
     private searchService: SearchService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   onSearch(term: string) {
     this.searching = true;
@@ -42,16 +42,18 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.getAllInstruments(Ledger.ETHEREUM).pipe(
-      switchMap((ids: string[]) => {
-        const bondArray$: Observable<Bond>[] = [];
-        ids.forEach(id => {
-          const bond$: Observable<Bond> = this.getInstrumentDetails(Ledger.ETHEREUM, id);
-          bondArray$.push(bond$);
-        });
-        return zip(...bondArray$);
-      })
-    ).subscribe((data: Bond[]) => this.bonds = data);
+    this.getAllInstruments(Ledger.ETHEREUM)
+      .pipe(
+        switchMap((ids: string[]) => {
+          const bondArray$: Observable<Bond>[] = [];
+          ids.forEach((id) => {
+            const bond$: Observable<Bond> = this.getInstrumentDetails(Ledger.ETHEREUM, id);
+            bondArray$.push(bond$);
+          });
+          return zip(...bondArray$);
+        })
+      )
+      .subscribe((data: Bond[]) => (this.bonds = data));
   }
 
   getAllInstruments(ledger: Ledger) {
@@ -62,8 +64,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
           ledger: ledger,
         },
       })
-      .valueChanges
-      .pipe(map((result: any) => result.data.getAllInstruments));
+      .valueChanges.pipe(map((result: any) => result.data.getAllInstruments));
   }
 
   getInstrumentDetails(ledger: Ledger, instrumentAddress: string) {
@@ -72,16 +73,13 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         query: GET_INSTRUMENT_DETAILS,
         variables: {
           ledger: ledger,
-          contractAddress: instrumentAddress
+          contractAddress: instrumentAddress,
         },
       })
-      .valueChanges
-      .pipe(
-        map(
-          (result: any) => {
-            return { ...result.data.getInstrumentDetails, ...{ ledger: ledger } };
-          }
-        )
+      .valueChanges.pipe(
+        map((result: any) => {
+          return { ...result.data.getInstrumentDetails, ...{ ledger: ledger } };
+        })
       );
   }
 
@@ -94,9 +92,9 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
-  action(item: any): void {
-    console.log("action: ", item);
+  action(contractAdress: string) {
+    this.router.navigate(['bond', contractAdress]);
   }
 
-  ngOnDestroy() { }
+  ngOnDestroy() {}
 }

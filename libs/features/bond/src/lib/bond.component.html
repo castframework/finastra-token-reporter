@@ -79,7 +79,14 @@
                 <div class="blockchain-content">
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">Ledger:</h6>
-                        <div>{{instrumentDetails.ledger}}</div>
+                        <div>
+                            <img class="icon" width="15px" src="{{
+                                'https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/128/' +
+                                instrumentDetails.ledger.toLowerCase().replace(' ', '-') +
+                                  '.png'
+                              }}" />
+                            {{instrumentDetails.ledger}}
+                        </div>
                     </div>
 
                     <div class="details">

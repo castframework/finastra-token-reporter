@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavbarService } from '@finastra/shared';
 import { routes } from './constants';
-import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'finastra-root',

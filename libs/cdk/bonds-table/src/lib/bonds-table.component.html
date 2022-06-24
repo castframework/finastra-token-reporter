@@ -13,8 +13,7 @@
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header scope="column"> Instrument Name </th>
-    <td mat-cell *matCellDef="let row" (click)="emitItem({'contractAddress': row.contractAddress})"
-      class="external-link">
+    <td mat-cell *matCellDef="let row" (click)="emitItem(row.contractAddress)" class="external-link">
       {{row.name}} </td>
   </ng-container>
 
@@ -27,12 +26,15 @@
   <ng-container matColumnDef="issuer">
     <th mat-header-cell *matHeaderCellDef> Issuer </th>
     <td mat-cell *matCellDef="let row">
-      {{row.issuer}} </td>
+      <a href="https://etherscan.io/address/{{row.issuer}}" target="_blank" class="uxg-link">
+        {{row.issuer | ethShort}}
+      </a>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="maturityDate">
     <th mat-header-cell *matHeaderCellDef mat-sort-header scope="column"> Maturity </th>
-    <td mat-cell *matCellDef="let row"> {{row.maturityDate*1000 | date: 'shortDate'}} </td>
+    <td mat-cell *matCellDef="let row"> {{row.maturityDate*1000 | date: 'longDate'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="interestRateInBips">

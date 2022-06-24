@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from '@apollo/client/utilities';
+import { NavbarService } from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
 import { map, switchMap, take, tap } from 'rxjs';
-import { NavbarService } from '../../../../../apps/client/src/app/navbar.service';
 import { GET_INSTRUMENT_DETAILS } from './bond.gql';
 
 @Component({

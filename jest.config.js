@@ -33,5 +33,6 @@ module.exports = {
   projects: [
     '<rootDir>/libs/cdk/bonds-table',
     '<rootDir>/libs/cdk/global-search',
-  ]
+    '<rootDir>/libs/shared',
+  ],
 };
