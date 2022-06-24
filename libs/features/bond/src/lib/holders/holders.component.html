@@ -1,0 +1,6 @@
+<ng-container *ngIf="holders; else loadingHolders">
+    {{holders | json}}
+</ng-container>
+<ng-template #loadingHolders>
+    Loading
+</ng-template>

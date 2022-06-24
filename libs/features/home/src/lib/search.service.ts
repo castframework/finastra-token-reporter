@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BlockChainHelpersService } from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
 import { ReplaySubject } from 'rxjs';
 import { GET_INSTRUMENT_DETAILS_SHORT } from './home.gql';
@@ -7,21 +8,15 @@ import { GET_INSTRUMENT_DETAILS_SHORT } from './home.gql';
   providedIn: 'root',
 })
 export class SearchService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private blockchainHelpers: BlockChainHelpersService) {}
 
   crystalBall(term: string) {
     let crystalBall = {
       isAddress: false,
       ledger: '',
     };
-    if (term.startsWith('0x')) {
-      crystalBall.isAddress = true;
-      crystalBall.ledger = 'ETHEREUM';
-    }
-    if (term.startsWith('tz')) {
-      crystalBall.isAddress = true;
-      crystalBall.ledger = 'TEZOS';
-    }
+    crystalBall.ledger = this.blockchainHelpers.inferLedger(term);
+    if (crystalBall.ledger !== '') crystalBall.isAddress = true;
     return crystalBall;
   }
 

@@ -4,16 +4,19 @@
 @use '@finastra/angular-theme/base';
 
 @use '../../../libs/cdk/global-search/src/lib/global-search.theme.scss';
+@use '@finastra/angular-components/skeleton-text/src/skeleton-text.theme' as skeleton;
 
 @include angular-theme.uxg-core();
 
 // Add components typography mixins inside this mixin
-@mixin app-typography($typography) {}
+@mixin app-typography($typography) {
+}
 
 // Add components theme mixins inside this mixin
 @mixin app-theme($theme) {
   @include angular-theme.uxg-material-theme($theme);
   @include global-search.theme($theme);
+  @include skeleton.theme($theme);
 }
 
 @include app-typography(angular-theme.$typography);

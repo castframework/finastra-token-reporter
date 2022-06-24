@@ -23,6 +23,7 @@ export const GET_INSTRUMENT_DETAILS = gql`
       isinCode
       maturityDate
       interestRateInBips
+      contractAddress
     }
   }
 `;

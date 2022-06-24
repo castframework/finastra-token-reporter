@@ -5,6 +5,24 @@
   }
 }
 
+mat-card.loading {
+  h3 {
+    display: flex;
+
+    span {
+      margin-right: 10px;
+    }
+  }
+
+  mat-card-content {
+    uxg-skeleton-text {
+      width: 150px;
+    }
+  }
+}
+
+// 260px
+
 mat-card-content {
   grid-template-columns: 2fr 1fr;
   display: grid;

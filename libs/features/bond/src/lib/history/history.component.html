@@ -1,0 +1,6 @@
+<ng-container *ngIf="history; else loadingHistory">
+    {{history | json}}
+</ng-container>
+<ng-template #loadingHistory>
+    Loading
+</ng-template>

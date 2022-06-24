@@ -1,0 +1,6 @@
+<ng-container *ngIf="transactions; else loadingTxs">
+    {{transactions | json}}
+</ng-container>
+<ng-template #loadingTxs>
+    Loading
+</ng-template>
