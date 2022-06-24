@@ -30,5 +30,8 @@ module.exports = {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
-  projects: '<rootDir>/libs/cdk/global-search',
+  projects: [
+    '<rootDir>/libs/cdk/bonds-table',
+    '<rootDir>/libs/cdk/global-search',
+  ]
 };

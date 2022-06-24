@@ -45,6 +45,7 @@
     "@angular/platform-browser-dynamic": "13.3.8",
     "@angular/router": "13.3.8",
     "@apollo/client": "^3.0.0",
+    "@finastra/fds-theme": "^0.0.32",
     "@finastra/nestjs-logger": "^0.3.0",
     "@finastra/nestjs-oidc": "^0.24.3",
     "@finastra/nestjs-proxy": "^0.5.3",
