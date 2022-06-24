@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { routes } from './constants';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'finastra-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   appName = 'Cast Challenge #3';
   navigationNodes = routes;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public navbarService: NavbarService) {}
 
   nodeChosen(node: any) {
     this.router.navigate([node.path]);

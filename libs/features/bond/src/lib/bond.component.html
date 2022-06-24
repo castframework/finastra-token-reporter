@@ -1,3 +1,133 @@
-<p>
-    Showing {{instrumentAddress}}
-</p>
+<ng-container *ngIf="instrumentDetails$ | async as instrumentDetails; else loading">
+    <mat-card>
+        <h3 class="uxg-h3"><span class="uxg-text-primary">Bond</span> {{instrumentDetails.name}}</h3>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+            <div class="financial-details">
+                <h4 class="uxg-h4 uxg-text-primary">Financial details:</h4>
+                <div class="financial-details-content">
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">ISIN:</h6>
+                        <div>{{instrumentDetails.isinCode}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Divisor:</h6>
+                        <div>{{instrumentDetails.divisor}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Symbol:</h6>
+                        <div>{{instrumentDetails.symbol}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Coupon period (in months):</h6>
+                        <div>{{instrumentDetails.couponFrequencyInMonths}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Initial supply:</h6>
+                        <div>{{instrumentDetails.initialSupply}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">First coupon date:</h6>
+                        <div>{{instrumentDetails.firstCouponDate}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Denomination:</h6>
+                        <div>{{instrumentDetails.denomination}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Interest rate (in bips):</h6>
+                        <div>{{instrumentDetails.interestRateInBips}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Nominal:</h6>
+                        <div>{{instrumentDetails.initialSupply * instrumentDetails.denomination}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Call frequency:</h6>
+                        <div>-</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Start date:</h6>
+                        <div>{{instrumentDetails.startDate}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Soft bullet period (in months):</h6>
+                        <div>{{instrumentDetails.softBulletPeriodInMonths}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Maturity date:</h6>
+                        <div>{{instrumentDetails.maturityDate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="blockchain-details">
+                <h4 class="uxg-h4 uxg-text-primary">Blockchain details:</h4>
+                <div class="blockchain-content">
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Ledger:</h6>
+                        <div>{{instrumentDetails.ledger}}</div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Contract address:</h6>
+                        <div>
+                            <a href="https://etherscan.io/address/{{instrumentDetails.contractAddress}}" target="_blank"
+                                class="uxg-link">
+                                {{instrumentDetails.contractAddress | ethShort}}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Issuer address:</h6>
+                        <div>
+                            <a href="https://etherscan.io/address/{{instrumentDetails.issuer}}" target="_blank"
+                                class="uxg-link">
+                                {{instrumentDetails.issuer | ethShort}}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Registrar agent address:</h6>
+                        <div>
+                            <a href="https://etherscan.io/address/{{instrumentDetails.registrarAgentAddress}}"
+                                target="_blank" class="uxg-link">
+                                {{instrumentDetails.registrarAgentAddress | ethShort}}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="details">
+                        <h6 class="uxg-h6 uxg-text-primary">Settler agent address:</h6>
+                        <div>
+                            <a href="https://etherscan.io/address/{{instrumentDetails.settlerAgentAddress}}"
+                                target="_blank" class="uxg-link">
+                                {{instrumentDetails.settlerAgentAddress | ethShort}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
+</ng-container>
+
+<ng-template #loading>
+    Loading
+</ng-template>

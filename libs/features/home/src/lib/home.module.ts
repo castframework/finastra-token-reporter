@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
-import { BondsTableModule } from "@finastra/cdk/bonds-table";
+import { BondsTableModule } from '@finastra/cdk/bonds-table';
 import { GlobalSearchModule } from '@finastra/cdk/global-search';
 import { HomeComponent } from './home.component';
 
@@ -10,8 +11,9 @@ import { HomeComponent } from './home.component';
     CommonModule,
     RouterModule.forChild([{ path: '', pathMatch: 'full', component: HomeComponent }]),
     GlobalSearchModule,
-    BondsTableModule
+    BondsTableModule,
+    MatCardModule,
   ],
   declarations: [HomeComponent],
 })
-export class HomeModule { }
+export class HomeModule {}

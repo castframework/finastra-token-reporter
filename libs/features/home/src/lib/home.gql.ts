@@ -6,10 +6,11 @@ export const GET_WHOAMI = gql`
   }
 `;
 
-export const GET_INSTRUMENT_POSITIONS = gql`
-  query Query($ledger: Ledger!, $instrumentAddress: String!) {
-    getInstrumentPositions(ledger: $ledger, instrumentAddress: $instrumentAddress) {
-      balance
+export const GET_INSTRUMENT_DETAILS_SHORT = gql`
+  query GetInstrumentDetails($ledger: Ledger!, $contractAddress: String!) {
+    getInstrumentDetails(instrumentLedger: $ledger, contractAddress: $contractAddress) {
+      name
+      type
     }
   }
 `;

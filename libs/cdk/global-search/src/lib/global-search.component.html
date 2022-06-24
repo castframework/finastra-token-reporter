@@ -71,8 +71,8 @@
                 <div *ngIf="results" fxLayout fxLayoutAlign="space-between center" class="show-results"
                     (click)="onResultClick(query, results)">
                     <span class="uxg-subtitle-2">Show
-                        <span class="uxg-text-primary results__query">{{ query }}</span>
-                        ({{results.length}} positions)
+                        {{results.type}}
+                        <span class="uxg-text-primary">{{ results.name }}</span>
                     </span>
                     <mat-icon>chevron_right</mat-icon>
                 </div>

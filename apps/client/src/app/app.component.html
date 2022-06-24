@@ -1,11 +1,6 @@
-<uxg-global-nav
-  [appName]="appName"
-  [appContent]="appContent"
-  [navbarAction]="navbarAction"
-  [navigationNodes]="navigationNodes"
-  (brandAction)="brandAction()"
-  (nodeChosen)="nodeChosen($event)"
->
+<uxg-global-nav [appName]="appName" [appContent]="appContent" [navbarAction]="navbarAction"
+  [navigationNodes]="navigationNodes" [currentNode]="navbarService.currentNode$ | async" (brandAction)="brandAction()"
+  (nodeChosen)="nodeChosen($event)">
 </uxg-global-nav>
 
 <ng-template #appContent>

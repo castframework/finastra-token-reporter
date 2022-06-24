@@ -1,0 +1,25 @@
+:host {
+  h3,
+  h4 {
+    text-transform: uppercase;
+  }
+}
+
+mat-card-content {
+  grid-template-columns: 2fr 1fr;
+  display: grid;
+  gap: 50px;
+
+  margin-top: 50px;
+}
+
+.financial-details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 50px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}

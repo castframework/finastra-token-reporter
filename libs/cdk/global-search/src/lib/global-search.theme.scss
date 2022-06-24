@@ -161,16 +161,6 @@
         padding: fds.$uxg-spacing-2 0;
       }
 
-      .results__query {
-        width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 0;
-        vertical-align: bottom;
-        display: inline-block;
-      }
-
       &:hover {
         background: fds.get-color-from-palette($background, 'hover');
         cursor: pointer;

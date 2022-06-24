@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { ReplaySubject } from 'rxjs';
-import { GET_INSTRUMENT_POSITIONS } from './home.gql';
+import { GET_INSTRUMENT_DETAILS_SHORT } from './home.gql';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +35,7 @@ export class SearchService {
         },
         next: (res) => {
           console.log(res);
-          results$.next(res.data.getInstrumentPositions);
+          results$.next(res.data.getInstrumentDetails);
         },
       });
     } else {
@@ -44,12 +44,12 @@ export class SearchService {
     return results$;
   }
 
-  getInstrumentPositions(ledger: string, instrumentAddress: string) {
+  getInstrumentPositions(ledger: string, contractAddress: string) {
     return this.apollo.query<any>({
-      query: GET_INSTRUMENT_POSITIONS,
+      query: GET_INSTRUMENT_DETAILS_SHORT,
       variables: {
         ledger,
-        instrumentAddress,
+        contractAddress,
       },
     });
   }
