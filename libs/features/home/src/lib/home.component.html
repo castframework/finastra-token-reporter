@@ -12,20 +12,20 @@
 
 <ng-container *ngIf="bonds; else loading">
   <div class="bonds-explorer">
-    <div class="bonds-explorer-content">
+    <mat-card>
       <h4 class="uxg-h4" style="margin: 0;">DeFi Forge Bonds</h4>
       <p class="uxg-body-2">Find informations about the Forge security tokens deployed on the blockchains.</p>
 
       <div class="bonds-explorer-table">
         <finastra-bonds-table [bonds]="bonds" (selectedItem)="action($event)"></finastra-bonds-table>
       </div>
-    </div>
+    </mat-card>
   </div>
 </ng-container>
 
 <ng-template #loading>
   <div class="bonds-explorer">
-    <div class="bonds-explorer-content">
+    <mat-card class="loading">
       <div class="loader">
         <svg width="78" height="65" viewBox="-5 -8 175 152" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path id="track"
@@ -37,6 +37,6 @@
             stroke-dashoffset="0" />
         </svg>
       </div>
-    </div>
+    </mat-card>
   </div>
 </ng-template>

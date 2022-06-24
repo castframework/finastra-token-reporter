@@ -7,27 +7,27 @@
 
 .bonds-explorer {
   border-radius: 8px;
-  margin-top: -190px;
+  margin-top: -140px;
   padding: fds.$uxg-spacing-4 fds.$uxg-spacing-6;
 
-  .bonds-explorer-content {
-    border-radius: 8px;
-    height: 100%;
-    min-height: 250px;
-    padding: fds.$uxg-spacing-5;
-    background: var(--fds-surface);
+  .mat-card {
+    padding: fds.$uxg-spacing-4;
+
+    &.loading {
+      min-height: 250px;
+    }
 
     .bonds-explorer-table {
-      height: calc(100vh - 548px);
-      overflow: hidden;
-      overflow-y: scroll;
+      max-height: calc(100vh - 548px);
+      width: 100%;
+      overflow: scroll;
     }
   }
 }
 
 .loader {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -71,7 +71,7 @@
 }
 
 section {
-  padding: fds.$uxg-spacing-6 fds.$uxg-spacing-5 288px fds.$uxg-spacing-5;
+  padding: fds.$uxg-spacing-6 fds.$uxg-spacing-5 228px fds.$uxg-spacing-5;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   color: white;
