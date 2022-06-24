@@ -29,18 +29,8 @@
                     </div>
 
                     <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Initial supply:</h6>
-                        <div>{{instrumentDetails.initialSupply}}</div>
-                    </div>
-
-                    <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">First coupon date:</h6>
                         <div>{{instrumentDetails.firstCouponDate * 1000 | date:'longDate'}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Denomination:</h6>
-                        <div>{{instrumentDetails.denomination}}</div>
                     </div>
 
                     <div class="details">
@@ -50,12 +40,9 @@
 
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">Nominal:</h6>
-                        <div>{{instrumentDetails.initialSupply * instrumentDetails.denomination}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Call frequency:</h6>
-                        <div>-</div>
+                        <div matTooltipPosition="right"
+                            matTooltip="Initial supply ({{instrumentDetails.initialSupply}}) * denomination ({{instrumentDetails.denomination}})">
+                            {{instrumentDetails.initialSupply * instrumentDetails.denomination}}</div>
                     </div>
 
                     <div class="details">
@@ -168,17 +155,7 @@
                     </div>
 
                     <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Initial supply:</h6>
-                        <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
-                    </div>
-
-                    <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">First coupon date:</h6>
-                        <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Denomination:</h6>
                         <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
                     </div>
 
@@ -189,11 +166,6 @@
 
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">Nominal:</h6>
-                        <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Call frequency:</h6>
                         <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
                     </div>
 
