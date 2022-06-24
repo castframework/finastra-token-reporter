@@ -1,27 +1,34 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Bond } from "@finastra/api-interfaces";
+
+const COLUMNS: string[] = ['ledger', 'name', 'isinCode', 'issuer', 'maturityDate', 'interestRateInBips'];
 
 @Component({
   selector: 'finastra-bonds-table',
   templateUrl: './bonds-table.component.html',
   styleUrls: ['./bonds-table.component.scss']
 })
-export class BondsTableComponent implements OnInit {
+export class BondsTableComponent implements AfterViewInit {
 
-  dataSource: any;
+  dataSource: MatTableDataSource<Bond>;
+  displayedColumns: string[] = COLUMNS;
 
-  @Input() bonds?: Bond[];
+  @Input() set bonds(value: Bond[]) {
+    this.dataSource = new MatTableDataSource<Bond>(value);
+  };
+  @Output() selectedItem = new EventEmitter<any>();
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.dataSource = changes.bonds.currentValue;
+  emitItem(item: any) {
+    this.selectedItem.emit(item);
   }
-
-  displayedColumns: string[] = ['name', 'isinCode', 'issuer', 'maturityDate', 'interestRateInBips'];
-  //columnsToDisplay: string[] = this.displayedColumns.slice();
-  //data: PeriodicElement[] = ELEMENT_DATA;
 }

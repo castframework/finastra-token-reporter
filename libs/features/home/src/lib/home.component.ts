@@ -17,6 +17,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   whoami!: string;
   query: string = '';
   results: any;
+  bonds?: Bond[];
 
   constructor(
     private apollo: Apollo,
@@ -40,8 +41,6 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     this.router.navigate(['bond', event.query]);
   }
 
-  bonds?: Bond[];
-
   ngAfterViewInit() {
     this.getAllInstruments(Ledger.ETHEREUM).pipe(
       switchMap((ids: string[]) => {
@@ -53,13 +52,6 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         return zip(...bondArray$);
       })
     ).subscribe((data: Bond[]) => this.bonds = data);
-
-    /* of(['ETHEREUM', 'TEZOS'])
-      .pipe(
-        tap(console.log),
-        switchMap((ledgers) => forkJoin(ledgers.map((ledger: string) => this.getWhoami(ledger))))
-      )
-      .subscribe(console.log); */
   }
 
   getAllInstruments(ledger: Ledger) {
@@ -84,7 +76,13 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         },
       })
       .valueChanges
-      .pipe(map((result: any) => result.data.getInstrumentDetails));
+      .pipe(
+        map(
+          (result: any) => {
+            return { ...result.data.getInstrumentDetails, ...{ ledger: ledger } };
+          }
+        )
+      );
   }
 
   getWhoami(ledger: string) {
@@ -94,6 +92,10 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         ledger,
       },
     });
+  }
+
+  action(item: any): void {
+    console.log("action: ", item);
   }
 
   ngOnDestroy() { }

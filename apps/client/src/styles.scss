@@ -1,27 +1,29 @@
 @use 'sass:map';
-@use '@finastra/angular-theme' as fds;
+@use '@finastra/fds-theme' as fds;
+@use '@finastra/angular-theme' as angular-theme;
 @use '@finastra/angular-theme/base';
 
 @use '../../../libs/cdk/global-search/src/lib/global-search.theme.scss';
 
-@include fds.uxg-core();
+@include angular-theme.uxg-core();
 
 // Add components typography mixins inside this mixin
-@mixin app-typography($typography) {
-}
+@mixin app-typography($typography) {}
 
 // Add components theme mixins inside this mixin
 @mixin app-theme($theme) {
-  @include fds.uxg-material-theme($theme);
+  @include angular-theme.uxg-material-theme($theme);
   @include global-search.theme($theme);
 }
 
-@include app-typography(fds.$typography);
+@include app-typography(angular-theme.$typography);
 
-@include app-theme(fds.$light-theme);
+@include app-theme(angular-theme.$light-theme);
+@include fds.use-light-theme();
 
 @media (prefers-color-scheme: dark) {
-  @include app-theme(fds.$dark-theme);
+  @include app-theme(angular-theme.$dark-theme);
+  @include fds.use-dark-theme();
 }
 
 html,

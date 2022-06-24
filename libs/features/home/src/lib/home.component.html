@@ -10,4 +10,30 @@
   <div id='stars3'></div>
 </section>
 
-<finastra-bonds-table [bonds]="bonds"></finastra-bonds-table>
+<ng-container *ngIf="bonds; else loading">
+  <div class="bonds-explorer">
+    <div class="bonds-explorer-content">
+      <h4 class="uxg-h4" style="margin: 0;">DeFi Forge Bonds</h4>
+      <p class="uxg-body-2">Find informations about the Forge security tokens deployed on the blockchains.</p>
+
+      <div class="bonds-explorer-table">
+        <finastra-bonds-table [bonds]="bonds" (selectedItem)="action($event)"></finastra-bonds-table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+
+  <div class="loader">
+    <svg width="78" height="65" viewBox="-5 -8 175 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="track"
+        d="M75.3004 37C56.3004 37 53.8004 0.999998 33.8004 1C-18.6996 0.999991 -0.19968 131.214 33.8004 138.5C67.8004 145.786 175.3 94 166.3 55.5C157.3 17 94.3004 37 75.3004 37Z"
+        stroke-width="10" />
+      <path id="roller"
+        d="M75.3004 37C56.3004 37 53.8004 0.999998 33.8004 1C-18.6996 0.999991 -0.19968 131.214 33.8004 138.5C67.8004 145.786 175.3 94 166.3 55.5C157.3 17 94.3004 37 75.3004 37Z"
+        stroke="#694ED6" stroke-width="14" stroke-linecap="round" stroke-dasharray="30%, 260%" stroke-dashoffset="0" />
+    </svg>
+  </div>
+
+</ng-template>

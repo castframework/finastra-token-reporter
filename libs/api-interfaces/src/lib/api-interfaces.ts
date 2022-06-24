@@ -10,5 +10,6 @@ export interface Bond {
   issuer: string;
   maturityDate: string;
   interestRateInBips: number;
-  ledger: Ledger;
+  ledger?: Ledger;
+  contractAddress?: string;
 }
