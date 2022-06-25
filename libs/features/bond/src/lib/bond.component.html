@@ -229,7 +229,7 @@
             <bond-holders [holders]="positions$ | async"></bond-holders>
         </mat-tab>
         <mat-tab label="Instrument history">
-            <bond-history></bond-history>
+            <bond-history [history]="events$ | async"></bond-history>
         </mat-tab>
     </mat-tab-group>
 </mat-card>

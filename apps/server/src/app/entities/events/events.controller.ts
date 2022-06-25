@@ -8,10 +8,16 @@ export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @Get('')
-  getEvents(@Query('notification_type') notificationType: NOTIFICATION_TYPE): Promise<any> {
+  getEvents(
+    @Query('notification_type') notificationType: NOTIFICATION_TYPE,
+    @Query('instrumentAddress') instrumentAddress: string
+  ): Promise<any> {
     const options: GetEventsDto = {};
     if (notificationType) {
       options['contractNotification.notificationName'] = notificationType;
+    }
+    if (instrumentAddress) {
+      options['contractNotification.instrumentAddress'] = instrumentAddress;
     }
     return this.eventsService.findAll(options);
   }

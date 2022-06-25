@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from '@apollo/client/utilities';
-import { BlockChainHelpersService, NavbarService } from '@finastra/shared';
+import { BlockChainHelpersService, EventsService, NavbarService } from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
 import { map, switchMap, take, tap } from 'rxjs';
 import {
@@ -21,13 +21,15 @@ export class BondComponent implements OnInit {
   instrumentDetails$: Observable<any>;
   transactions$: Observable<any>;
   positions$: Observable<any>;
+  events$: Observable<any>;
   firstLoad = true;
 
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo,
     private navbarService: NavbarService,
-    private blockchainHelpers: BlockChainHelpersService
+    private blockchainHelpers: BlockChainHelpersService,
+    private eventsService: EventsService
   ) {
     this.navbarService.setTitle('Bond');
   }
@@ -81,7 +83,7 @@ export class BondComponent implements OnInit {
         );
         break;
       case TABS.INSTRUMENTS_HISTORY:
-        console.log('instruments');
+        this.events$ = this.getHistory(this.instrumentAddress).pipe(tap(console.log), take(1));
         break;
     }
   }
@@ -108,6 +110,10 @@ export class BondComponent implements OnInit {
         },
       })
       .pipe(map((apolloResult) => apolloResult.data.getInstrumentPositions)) as any;
+  }
+
+  getHistory(instrumentAddress: string) {
+    return this.eventsService.get(instrumentAddress) as any;
   }
 }
 
