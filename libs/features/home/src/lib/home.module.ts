@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { BondsTableModule } from '@finastra/cdk/bonds-table';
 import { GlobalSearchModule } from '@finastra/cdk/global-search';
+import { LoaderModule } from 'libs/cdk/loader/src';
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { HomeComponent } from './home.component';
     GlobalSearchModule,
     BondsTableModule,
     MatCardModule,
+    LoaderModule,
   ],
   declarations: [HomeComponent],
 })

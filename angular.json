@@ -41,6 +41,32 @@
       },
       "tags": []
     },
+    "cdk-eth-address": {
+      "projectType": "library",
+      "root": "libs/cdk/eth-address",
+      "sourceRoot": "libs/cdk/eth-address/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk/eth-address"],
+          "options": {
+            "jestConfig": "libs/cdk/eth-address/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cdk/eth-address/src/**/*.ts",
+              "libs/cdk/eth-address/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "cdk-global-search": {
       "projectType": "library",
       "root": "libs/cdk/global-search",
@@ -62,6 +88,29 @@
               "libs/cdk/global-search/src/**/*.ts",
               "libs/cdk/global-search/src/**/*.html"
             ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "cdk-loader": {
+      "projectType": "library",
+      "root": "libs/cdk/loader",
+      "sourceRoot": "libs/cdk/loader/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk/loader"],
+          "options": {
+            "jestConfig": "libs/cdk/loader/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/cdk/loader/src/**/*.ts", "libs/cdk/loader/src/**/*.html"]
           }
         }
       },

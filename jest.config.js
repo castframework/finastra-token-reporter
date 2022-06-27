@@ -34,5 +34,7 @@ module.exports = {
     '<rootDir>/libs/cdk/bonds-table',
     '<rootDir>/libs/cdk/global-search',
     '<rootDir>/libs/shared',
+    '<rootDir>/libs/cdk/eth-address',
+    '<rootDir>/libs/cdk/loader',
   ],
 };

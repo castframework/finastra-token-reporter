@@ -2,10 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { SkeletonTextModule } from '@finastra/angular-components/skeleton-text';
+import { EthAddressModule } from 'libs/cdk/eth-address/src';
+import { LoaderModule } from 'libs/cdk/loader/src';
 import { SharedModule } from 'libs/shared/src';
 import { BondComponent } from './bond.component';
 import { HistoryComponent } from './history/history.component';
@@ -22,6 +26,10 @@ import { TransactionsComponent } from './transactions/transactions.component';
     MatTabsModule,
     SkeletonTextModule,
     MatTooltipModule,
+    MatTableModule,
+    EthAddressModule,
+    MatProgressBarModule,
+    LoaderModule,
   ],
   declarations: [BondComponent, TransactionsComponent, HoldersComponent, HistoryComponent],
 })

@@ -3,11 +3,19 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { EthAddressModule } from 'libs/cdk/eth-address/src';
 import { SharedModule } from 'libs/shared/src';
 import { BondsTableComponent } from './bonds-table.component';
 
 @NgModule({
-  imports: [CommonModule, MatSortModule, MatTableModule, MatIconModule, SharedModule],
+  imports: [
+    CommonModule,
+    MatSortModule,
+    MatTableModule,
+    MatIconModule,
+    SharedModule,
+    EthAddressModule,
+  ],
   declarations: [BondsTableComponent],
   exports: [BondsTableComponent],
 })

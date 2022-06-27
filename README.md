@@ -72,7 +72,7 @@ _Below are some more advanced commands that might speed up your development flow
 ### Generate a new features
 
 Run `ng g @nrwl/angular:lib my-feature --directory=features --simpleModuleName --routing --lazy` to generate a features library.
-Then run `npx ng g component my-feature --project=features-my-feature --flat` to generate the underlying component
+Then run `ng g component my-feature --project=features-my-feature --flat` to generate the underlying component
 
 ### Generate a new cdk
 

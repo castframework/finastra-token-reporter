@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from '@apollo/client/utilities';
 import { BlockChainHelpersService, EventsService, NavbarService } from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
-import { map, switchMap, take, tap } from 'rxjs';
+import { map, ReplaySubject, switchMap, take, tap } from 'rxjs';
 import {
   GET_INSTRUMENT_DETAILS,
   GET_INSTRUMENT_POSITIONS,
@@ -23,15 +24,18 @@ export class BondComponent implements OnInit {
   positions$: Observable<any>;
   events$: Observable<any>;
   firstLoad = true;
+  initialSupply$ = new ReplaySubject<number>(1);
 
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo,
     private navbarService: NavbarService,
     private blockchainHelpers: BlockChainHelpersService,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private title: Title
   ) {
     this.navbarService.setTitle('Bond');
+    this.title.setTitle('Bond');
   }
 
   ngOnInit(): void {
@@ -45,8 +49,10 @@ export class BondComponent implements OnInit {
         this.firstLoad ? this.onTabChanged({ index: TABS.TRANSACTIONS }) : (this.firstLoad = false)
       ),
       switchMap((instrumentAddress) => this.getInstrumentPositions(this.ledger, instrumentAddress)),
-      tap((instrumentDetails) => this.navbarService.setTitle(`Bond ${instrumentDetails.name}`)),
       tap(console.log),
+      tap((instrumentDetails) => this.navbarService.setTitle(`Bond ${instrumentDetails.name}`)),
+      tap((instrumentDetails) => this.title.setTitle(`Bond ${instrumentDetails.name}`)),
+      tap((instrumentDetails) => this.initialSupply$.next(instrumentDetails.initialSupply)),
       take(1)
     ) as any;
   }

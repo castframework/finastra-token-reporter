@@ -1,0 +1,4 @@
+<a href="https://etherscan.io/address/{{address}}" target="_blank" class="uxg-link">
+    <ng-container *ngIf="short">{{address | ethShort}}</ng-container>
+    <ng-container *ngIf="!short">{{address}}</ng-container>
+</a>
