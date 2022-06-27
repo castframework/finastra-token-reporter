@@ -1,128 +1,123 @@
 <ng-container *ngIf="instrumentDetails$ | async as instrumentDetails; else loadingDetails">
-    <mat-card>
-        <h3 class="uxg-h3"><span class="uxg-text-primary">Bond</span> {{instrumentDetails.name}}</h3>
+    <h3 class="uxg-h3"><span class="uxg-text-secondary">Bond</span> {{instrumentDetails.name}}</h3>
 
-        <mat-divider></mat-divider>
+    <div class="bond-details">
+        <mat-card class="financial-details">
+            <h4 class="uxg-h4 uxg-text-secondary">Financial details</h4>
+            <div class="financial-details-content">
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">ISIN:</h6>
+                    <div>{{instrumentDetails.isinCode}}</div>
+                </div>
 
-        <mat-card-content>
-            <div class="financial-details">
-                <h4 class="uxg-h4 uxg-text-primary">Financial details:</h4>
-                <div class="financial-details-content">
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">ISIN:</h6>
-                        <div>{{instrumentDetails.isinCode}}</div>
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Divisor:</h6>
+                    <div>{{instrumentDetails.divisor}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Symbol:</h6>
+                    <div>{{instrumentDetails.symbol}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Coupon period (in months):</h6>
+                    <div>{{instrumentDetails.couponFrequencyInMonths}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">First coupon date:</h6>
+                    <div>{{instrumentDetails.firstCouponDate * 1000 | date:'longDate'}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Interest rate (in bips):</h6>
+                    <div>{{instrumentDetails.interestRateInBips}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Nominal:</h6>
+                    <div matTooltipPosition="right"
+                        matTooltip="Initial supply ({{instrumentDetails.initialSupply}}) * denomination ({{instrumentDetails.denomination}})">
+                        {{instrumentDetails.initialSupply * instrumentDetails.denomination | currency:'EUR'}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Start date:</h6>
+                    <div>{{instrumentDetails.startDate * 1000 | date:'longDate'}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Soft bullet period (in months):</h6>
+                    <div>{{instrumentDetails.softBulletPeriodInMonths}}</div>
+                </div>
+
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Maturity date:</h6>
+                    <div>{{instrumentDetails.maturityDate * 1000 | date:'longDate'}}</div>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="blockchain-details">
+            <h4 class="uxg-h4 uxg-text-secondary">Blockchain details</h4>
+            <div class="blockchain-content">
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Ledger:</h6>
+                    <div>
+                        <img class="icon" width="15px" src="{{
+                                    'https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/128/' +
+                                    instrumentDetails.ledger.toLowerCase().replace(' ', '-') +
+                                      '.png'
+                                  }}" />
+                        {{instrumentDetails.ledger}}
                     </div>
+                </div>
 
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Divisor:</h6>
-                        <div>{{instrumentDetails.divisor}}</div>
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Contract address:</h6>
+                    <div>
+                        <finastra-eth-address [address]="instrumentDetails.contractAddress"></finastra-eth-address>
                     </div>
+                </div>
 
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Symbol:</h6>
-                        <div>{{instrumentDetails.symbol}}</div>
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Issuer address:</h6>
+                    <div>
+                        <finastra-eth-address [address]="instrumentDetails.issuer"></finastra-eth-address>
                     </div>
+                </div>
 
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Coupon period (in months):</h6>
-                        <div>{{instrumentDetails.couponFrequencyInMonths}}</div>
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Registrar agent address:</h6>
+                    <div>
+                        <finastra-eth-address [address]="instrumentDetails.registrarAgentAddress">
+                        </finastra-eth-address>
                     </div>
+                </div>
 
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">First coupon date:</h6>
-                        <div>{{instrumentDetails.firstCouponDate * 1000 | date:'longDate'}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Interest rate (in bips):</h6>
-                        <div>{{instrumentDetails.interestRateInBips}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Nominal:</h6>
-                        <div matTooltipPosition="right"
-                            matTooltip="Initial supply ({{instrumentDetails.initialSupply}}) * denomination ({{instrumentDetails.denomination}})">
-                            {{instrumentDetails.initialSupply * instrumentDetails.denomination | currency:'EUR'}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Start date:</h6>
-                        <div>{{instrumentDetails.startDate * 1000 | date:'longDate'}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Soft bullet period (in months):</h6>
-                        <div>{{instrumentDetails.softBulletPeriodInMonths}}</div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Maturity date:</h6>
-                        <div>{{instrumentDetails.maturityDate * 1000 | date:'longDate'}}</div>
+                <div class="details">
+                    <h6 class="uxg-h6 uxg-text-primary">Settler agent address:</h6>
+                    <div>
+                        <finastra-eth-address [address]="instrumentDetails.settlerAgentAddress">
+                        </finastra-eth-address>
                     </div>
                 </div>
             </div>
-            <div class="blockchain-details">
-                <h4 class="uxg-h4 uxg-text-primary">Blockchain details:</h4>
-                <div class="blockchain-content">
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Ledger:</h6>
-                        <div>
-                            <img class="icon" width="15px" src="{{
-                                'https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/128/' +
-                                instrumentDetails.ledger.toLowerCase().replace(' ', '-') +
-                                  '.png'
-                              }}" />
-                            {{instrumentDetails.ledger}}
-                        </div>
-                    </div>
+        </mat-card>
+    </div>
 
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Contract address:</h6>
-                        <div>
-                            <finastra-eth-address [address]="instrumentDetails.contractAddress"></finastra-eth-address>
-                        </div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Issuer address:</h6>
-                        <div>
-                            <finastra-eth-address [address]="instrumentDetails.issuer"></finastra-eth-address>
-                        </div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Registrar agent address:</h6>
-                        <div>
-                            <finastra-eth-address [address]="instrumentDetails.registrarAgentAddress">
-                            </finastra-eth-address>
-                        </div>
-                    </div>
-
-                    <div class="details">
-                        <h6 class="uxg-h6 uxg-text-primary">Settler agent address:</h6>
-                        <div>
-                            <finastra-eth-address [address]="instrumentDetails.settlerAgentAddress">
-                            </finastra-eth-address>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </mat-card-content>
-
-    </mat-card>
 </ng-container>
 
 <ng-template #loadingDetails>
-    <mat-card class="loading">
+    <div class="loading">
         <h3 class="uxg-h3">
-            <span class="uxg-text-primary">Bond</span>
+            <span class="uxg-text-secondary">Bond</span>
             <uxg-skeleton-text class="uxg-h3" style="width: 260px;" animated></uxg-skeleton-text>
         </h3>
-        <mat-divider></mat-divider>
 
-        <mat-card-content>
-            <div class="financial-details">
-                <h4 class="uxg-h4 uxg-text-primary">Financial details:</h4>
+        <div class="bond-details">
+            <mat-card class="financial-details">
+                <h4 class="uxg-h4 uxg-text-secondary">Financial details</h4>
                 <div class="financial-details-content">
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">ISIN:</h6>
@@ -174,9 +169,9 @@
                         <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
                     </div>
                 </div>
-            </div>
-            <div class="blockchain-details">
-                <h4 class="uxg-h4 uxg-text-primary">Blockchain details:</h4>
+            </mat-card>
+            <mat-card class="blockchain-details">
+                <h4 class="uxg-h4 uxg-text-secondary">Blockchain details</h4>
                 <div class="blockchain-content">
                     <div class="details">
                         <h6 class="uxg-h6 uxg-text-primary">Ledger:</h6>
@@ -203,9 +198,9 @@
                         <uxg-skeleton-text class="uxg-h3" animated></uxg-skeleton-text>
                     </div>
                 </div>
-            </div>
-        </mat-card-content>
-    </mat-card>
+            </mat-card>
+        </div>
+    </div>
 </ng-template>
 
 <br>

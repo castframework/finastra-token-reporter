@@ -5,7 +5,7 @@
   }
 }
 
-mat-card.loading {
+div.loading {
   h3 {
     display: flex;
 
@@ -23,12 +23,10 @@ mat-card.loading {
 
 // 260px
 
-mat-card-content {
+.bond-details {
   grid-template-columns: 2fr 1fr;
   display: grid;
-  gap: 50px;
-
-  margin-top: 50px;
+  gap: 32px;
 }
 
 .financial-details-content {
