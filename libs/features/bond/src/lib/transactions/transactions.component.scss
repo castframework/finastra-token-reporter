@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  padding-top: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+.statuses {
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: 500;
+
+  &.status-SETTLED {
+    background: #d4efda;
+    color: #56c271;
+  }
+}
+
+finastra-loader {
+  margin-top: 90px;
+  margin-bottom: -20px;
+}
