@@ -1,4 +1,5 @@
 :host {
+
   h3,
   h4 {
     //text-transform: uppercase;
@@ -14,6 +15,7 @@ div.loading {
   h3 {
     display: flex;
     justify-content: left;
+    align-items: center;
 
     span {
       margin-right: 10px;
@@ -30,9 +32,19 @@ div.loading {
 // 260px
 
 .bond-details {
-  grid-template-columns: 2fr 1fr;
-  display: grid;
   gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .financial-details {
+    flex: 2;
+  }
+
+  .blockchain-details {
+    flex: 1;
+  }
+
 }
 
 .financial-details-content {
@@ -44,4 +56,11 @@ div.loading {
 .details {
   display: flex;
   justify-content: space-between;
+
+  uxg-skeleton-text {
+    height: 18px;
+    border-radius: 16px;
+    margin: 0 0 16px;
+    max-width: 180px;
+  }
 }
