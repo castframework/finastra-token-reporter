@@ -3,9 +3,13 @@
         <span>
             <span class="uxg-text-secondary">Bond</span> {{instrumentDetails.name}}
         </span>
-        <button mat-icon-button color="primary" (click)="downloadPdf()">
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
             <mat-icon>file_download</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="exportPdf()">Export as PDF</button>
+            <button mat-menu-item (click)="exportJSON()">Export as JSON</button>
+        </mat-menu>
     </h3>
 
     <div class="bond-details" id="pdf">

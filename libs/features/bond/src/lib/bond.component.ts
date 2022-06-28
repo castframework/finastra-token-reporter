@@ -2,11 +2,14 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from '@apollo/client/utilities';
-import { BlockChainHelpersService, EventsService, NavbarService } from '@finastra/shared';
+import {
+  BlockChainHelpersService,
+  EventsService,
+  ExportService,
+  NavbarService,
+} from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
-import html2canvas from 'html2canvas';
-import jspdf from 'jspdf';
-import { map, ReplaySubject, switchMap, take, tap } from 'rxjs';
+import { combineLatest, map, ReplaySubject, switchMap, take, tap } from 'rxjs';
 import {
   GET_INSTRUMENT_DETAILS,
   GET_INSTRUMENT_POSITIONS,
@@ -36,7 +39,8 @@ export class BondComponent implements OnInit {
     private blockchainHelpers: BlockChainHelpersService,
     private eventsService: EventsService,
     private title: Title,
-    private hostElement: ElementRef
+    private hostElement: ElementRef,
+    private exportService: ExportService
   ) {
     this.navbarService.setTitle('Bond');
     this.title.setTitle('Bond');
@@ -127,21 +131,29 @@ export class BondComponent implements OnInit {
     return this.eventsService.get(instrumentAddress) as any;
   }
 
-  downloadPdf() {
-    let data = this.hostElement.nativeElement as any;
-    html2canvas(data).then((canvas) => {
-      const contentDataURL = canvas.toDataURL('image/png');
-      let pdf = new jspdf('l', 'px', 'a4');
-      let multiplier = 5;
-      pdf.addImage(
-        contentDataURL,
-        'PNG',
-        50,
-        50,
-        canvas.width / multiplier,
-        canvas.height / multiplier
-      );
-      pdf.save(`Bond ${this.instrumentName}.pdf`);
+  exportPdf() {
+    let elem = this.hostElement.nativeElement;
+    let fileName = `Bond ${this.instrumentName}`;
+    this.exportService.asPdf(fileName, elem);
+  }
+
+  exportJSON() {
+    this.onTabChanged({ index: TABS.HOLDERS });
+    this.onTabChanged({ index: TABS.INSTRUMENTS_HISTORY });
+    let fileName = `Bond ${this.instrumentName}`;
+    combineLatest([
+      this.instrumentDetails$,
+      this.transactions$,
+      this.positions$,
+      this.events$,
+    ]).subscribe(([instrumentDetails, transactions, positions, events]) => {
+      let dataObjToWrite = {
+        instrumentDetails,
+        transactions,
+        positions,
+        events,
+      };
+      this.exportService.asJSON(fileName, dataObjToWrite);
     });
   }
 }
