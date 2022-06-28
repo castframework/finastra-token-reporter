@@ -51,7 +51,7 @@
         <mat-divider class="mt-2"></mat-divider>
 
         <div [ngClass]="{ 'query-container': query }" fxLayout="column">
-            <ng-container *ngIf="searchService.recentSearches$ | async as recentSearches">
+            <ng-container *ngIf="!query && searchService.recentSearches$ | async as recentSearches">
                 <h4 *ngIf="recentSearches?.length" class="title">Recent searches</h4>
                 <ng-container *ngFor="let term of recentSearches">
                     <a class="finastra-searches" fxLayout fxLayoutAlign="start center" (click)="onSelect(term)">
