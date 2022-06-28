@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from '@apollo/client/utilities';
 import { BlockChainHelpersService, EventsService, NavbarService } from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
+import html2canvas from 'html2canvas';
+import jspdf from 'jspdf';
 import { map, ReplaySubject, switchMap, take, tap } from 'rxjs';
 import {
   GET_INSTRUMENT_DETAILS,
@@ -25,6 +27,7 @@ export class BondComponent implements OnInit {
   events$: Observable<any>;
   firstLoad = true;
   initialSupply$ = new ReplaySubject<number>(1);
+  instrumentName: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +35,8 @@ export class BondComponent implements OnInit {
     private navbarService: NavbarService,
     private blockchainHelpers: BlockChainHelpersService,
     private eventsService: EventsService,
-    private title: Title
+    private title: Title,
+    private hostElement: ElementRef
   ) {
     this.navbarService.setTitle('Bond');
     this.title.setTitle('Bond');
@@ -53,6 +57,7 @@ export class BondComponent implements OnInit {
       tap((instrumentDetails) => this.navbarService.setTitle(`Bond ${instrumentDetails.name}`)),
       tap((instrumentDetails) => this.title.setTitle(`Bond ${instrumentDetails.name}`)),
       tap((instrumentDetails) => this.initialSupply$.next(instrumentDetails.initialSupply)),
+      tap((instrumentDetails) => (this.instrumentName = instrumentDetails.name)),
       take(1)
     ) as any;
   }
@@ -120,6 +125,24 @@ export class BondComponent implements OnInit {
 
   getHistory(instrumentAddress: string) {
     return this.eventsService.get(instrumentAddress) as any;
+  }
+
+  downloadPdf() {
+    let data = this.hostElement.nativeElement as any;
+    html2canvas(data).then((canvas) => {
+      const contentDataURL = canvas.toDataURL('image/png');
+      let pdf = new jspdf('l', 'px', 'a4');
+      let multiplier = 5;
+      pdf.addImage(
+        contentDataURL,
+        'PNG',
+        50,
+        50,
+        canvas.width / multiplier,
+        canvas.height / multiplier
+      );
+      pdf.save(`Bond ${this.instrumentName}.pdf`);
+    });
   }
 }
 

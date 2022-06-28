@@ -61,6 +61,8 @@
     "compression": "^1.7.4",
     "express-session": "^1.17.1",
     "graphql": "^16",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "mongoose": "^6.3.6",
     "reflect-metadata": "^0.1.13",
     "rxjs": "7.5.2",

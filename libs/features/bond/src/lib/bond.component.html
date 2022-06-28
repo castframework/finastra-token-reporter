@@ -1,7 +1,14 @@
 <ng-container *ngIf="instrumentDetails$ | async as instrumentDetails; else loadingDetails">
-    <h3 class="uxg-h3"><span class="uxg-text-secondary">Bond</span> {{instrumentDetails.name}}</h3>
+    <h3 class="uxg-h3">
+        <span>
+            <span class="uxg-text-secondary">Bond</span> {{instrumentDetails.name}}
+        </span>
+        <button mat-icon-button color="primary" (click)="downloadPdf()">
+            <mat-icon>file_download</mat-icon>
+        </button>
+    </h3>
 
-    <div class="bond-details">
+    <div class="bond-details" id="pdf">
         <mat-card class="financial-details">
             <h4 class="uxg-h4 uxg-text-secondary">Financial details</h4>
             <div class="financial-details-content">
