@@ -509,3 +509,28 @@ section {
     transform: translateY(-2000px);
   }
 }
+
+@media only screen and (max-width: 768px) {
+  section {
+    padding: 40px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  finastra-global-search {
+    margin-bottom: 16px;
+  }
+
+  .bonds-explorer {
+    margin-top: -50px;
+    padding: 24px 16px;
+
+    .mat-card {
+      .bonds-explorer-table {
+        max-height: calc(100vh - 200px);
+      }
+    }
+  }
+}

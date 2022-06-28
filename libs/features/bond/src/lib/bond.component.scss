@@ -1,5 +1,4 @@
 :host {
-
   h3,
   h4 {
     //text-transform: uppercase;
@@ -44,7 +43,6 @@ div.loading {
   .blockchain-details {
     flex: 1;
   }
-
 }
 
 .financial-details-content {
@@ -62,5 +60,11 @@ div.loading {
     border-radius: 16px;
     margin: 0 0 16px;
     max-width: 180px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .financial-details-content {
+    grid-template-columns: 1fr;
   }
 }
