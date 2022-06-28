@@ -28,6 +28,37 @@ export interface Holder {
   rank?: number;
 }
 
+export interface History {
+  notificationName: ContractNotificationName;
+  instrumentAddress: ETH_Address;
+  transactionHash: string;
+  lightSettlementTransactions: LightSettlementTransaction[];
+  settlementTransactionOperationType: string;
+}
+
+export interface LightSettlementTransaction {
+  id: string;
+  participantAccountNumbers: SettlementTransactionParticipantAddresses;
+}
+
+export interface SettlementTransactionParticipantAddresses {
+  securityDeliverer: string;
+  securityReceiver: string;
+  securityIssuer: string;
+  settler: string;
+  registrar: string;
+}
+
+export enum ContractNotificationName {
+  SubscriptionInitiated = 'SubscriptionInitiated',
+  TradeInitiated = 'TradeInitiated',
+  RedemptionInitiated = 'RedemptionInitiated',
+  PaymentReceived = 'PaymentReceived',
+  PaymentTransferred = 'PaymentTransferred',
+  Transfer = 'Transfer',
+  SettlementTransactionCanceled = 'SettlementTransactionCanceled',
+}
+
 export interface Transaction {
   id: UUID;
   settlementType: SETTLEMENT_TYPES;

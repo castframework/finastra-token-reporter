@@ -5,32 +5,32 @@
     width: 100%;
 
     .mat-row {
-      // &:nth-child(odd) {
-      //   background-color: rgba(var(--color-primary), .12);
-      // }
-
       &:hover {
-        // cursor: pointer;
-        // transition-duration: .1s;
-        // @include mat.elevation(2);
-        background-color: rgba(var(--color-primary), .12);
+        background-color: rgba(var(--color-primary-lighter), .3);
       }
-
-      // &:active {
-      //   transition-duration: .1s;
-      //   transform: translateY(2px);
-      //   @include mat.elevation(0);
-      // }
     }
 
     .external-link {
-      color: rgba(var(--color-primary), .9);
+      color: rgba(var(--color-primary), 1);
+      //text-decoration: underline;
 
       &:hover {
         cursor: pointer;
-        text-decoration: underline;
-        color: rgba(var(--color-primary), 1);
+        color: rgba(var(--color-secondary), 1);
       }
     }
+  }
+
+  ::ng-deep .mat-table thead tr th {
+    background-color: var(--fds-primary-lighter);
+    border-bottom: 2px solid var(--fds-primary-lighter);
+  }
+
+  .mat-table th.mat-header-cell:first-of-type {
+    border-radius: 4px 0 0 0;
+  }
+
+  .mat-table th.mat-header-cell:last-of-type {
+    border-radius: 0 4px 0 0;
   }
 }

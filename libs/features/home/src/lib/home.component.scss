@@ -11,10 +11,14 @@
   padding: fds.$uxg-spacing-4 fds.$uxg-spacing-6;
 
   .mat-card {
-    padding: fds.$uxg-spacing-4;
+    padding: fds.$uxg-spacing-2;
 
     &.loading {
       min-height: 250px;
+    }
+
+    .bonds-explorer-header {
+      padding: fds.$uxg-spacing-3 fds.$uxg-spacing-3 fds.$uxg-spacing-0 fds.$uxg-spacing-3;
     }
 
     .bonds-explorer-table {

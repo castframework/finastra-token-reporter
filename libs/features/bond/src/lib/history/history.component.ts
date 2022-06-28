@@ -1,4 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { History } from '@finastra/api-interfaces';
+
+const COLUMNS: string[] = [
+  'notificationName',
+  'instrumentAddress',
+  'transactionHash',
+];
 
 @Component({
   selector: 'bond-history',
@@ -6,9 +13,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-  @Input() history: any;
+  @Input() history: History;
 
-  constructor() {}
+  displayedColumns: string[] = COLUMNS;
 
-  ngOnInit(): void {}
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log(history);
+  }
 }

@@ -36,8 +36,8 @@
   </ng-container>
 
   <ng-container matColumnDef="interestRateInBips">
-    <th mat-header-cell *matHeaderCellDef> Rate </th>
-    <td mat-cell *matCellDef="let row"> {{row.interestRateInBips}} </td>
+    <th mat-header-cell *matHeaderCellDef> Rate (%) </th>
+    <td mat-cell *matCellDef="let row"> {{row.interestRateInBips}}% </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
