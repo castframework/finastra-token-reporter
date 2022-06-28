@@ -156,6 +156,26 @@ export class BondComponent implements OnInit {
       this.exportService.asJSON(fileName, dataObjToWrite);
     });
   }
+
+  exportXML() {
+    this.onTabChanged({ index: TABS.HOLDERS });
+    this.onTabChanged({ index: TABS.INSTRUMENTS_HISTORY });
+    let fileName = `Bond ${this.instrumentName}`;
+    combineLatest([
+      this.instrumentDetails$,
+      this.transactions$,
+      this.positions$,
+      this.events$,
+    ]).subscribe(([instrumentDetails, transactions, positions, events]) => {
+      let dataObjToWrite = {
+        instrumentDetails,
+        transactions,
+        positions,
+        events,
+      };
+      this.exportService.asXML(fileName, dataObjToWrite);
+    });
+  }
 }
 
 export enum TABS {
