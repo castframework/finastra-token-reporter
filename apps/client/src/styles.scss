@@ -9,8 +9,7 @@
 @include angular-theme.uxg-core();
 
 // Add components typography mixins inside this mixin
-@mixin app-typography($typography) {
-}
+@mixin app-typography($typography) {}
 
 // Add components theme mixins inside this mixin
 @mixin app-theme($theme) {
@@ -24,7 +23,15 @@
 @include app-theme(angular-theme.$light-theme);
 @include fds.use-light-theme();
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --logo: url(https://res.cloudinary.com/ideation/image/upload/w_240,q_200,f_auto,dpr_auto/zsism4hrd2pwwjflphjz);
+}
+
+:root .uxg-dark-theme {
+  --logo: url(https://www.cast-framework.com/wp-content/themes/forge-framework/img/logo-cast-w.svg);
+}
+
+.uxg-dark-theme {
   @include app-theme(angular-theme.$dark-theme);
   @include fds.use-dark-theme();
 }

@@ -1,0 +1,13 @@
+.nav-settings {
+  padding: 0 27px;
+  display: flex;
+  align-items: center;
+
+  mat-slide-toggle {
+    padding: 0 8px;
+  }
+
+  span {
+    flex: 1;
+  }
+}

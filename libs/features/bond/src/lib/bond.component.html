@@ -1,10 +1,17 @@
+<section>
+  <div id='stars'></div>
+  <div id='stars2'></div>
+  <div id='stars3'></div>
+</section>
+
 <ng-container *ngIf="instrumentDetails$ | async as instrumentDetails; else loadingDetails">
     <h3 class="uxg-h3">
         <span>
-            <span class="uxg-text-secondary">Bond</span> {{instrumentDetails.name}}
+            <span class="uxg-text-secondary">Bond</span> <span class="bond-name">{{instrumentDetails.name}}</span>
         </span>
-        <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
-            <mat-icon>file_download</mat-icon>
+        <button mat-flat-button color="primary" dense [matMenuTriggerFor]="menu">
+          <mat-icon>file_download</mat-icon>
+          Export
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="exportPdf()">Export as PDF</button>
@@ -34,7 +41,7 @@
 
                 <div class="details">
                     <h6 class="uxg-h6 uxg-text-primary">Coupon period (in months):</h6>
-                    <div>{{instrumentDetails.couponFrequencyInMonths}}</div>
+                    <div *ngIf="instrumentDetails.interestRateInBips > 0">{{instrumentDetails.couponFrequencyInMonths}}</div>
                 </div>
 
                 <div class="details">
@@ -54,14 +61,14 @@
                         {{instrumentDetails.initialSupply * instrumentDetails.denomination | currency:'EUR'}}</div>
                 </div>
 
-                <div class="details">
-                    <h6 class="uxg-h6 uxg-text-primary">Start date:</h6>
-                    <div>{{instrumentDetails.startDate * 1000 | date:'longDate'}}</div>
+                <div class="details" *ngIf="instrumentDetails.isSoftBullet">
+                  <h6 class="uxg-h6 uxg-text-primary">Soft bullet period (in months):</h6>
+                  <div>{{instrumentDetails.softBulletPeriodInMonths}}</div>
                 </div>
 
                 <div class="details">
-                    <h6 class="uxg-h6 uxg-text-primary">Soft bullet period (in months):</h6>
-                    <div>{{instrumentDetails.softBulletPeriodInMonths}}</div>
+                    <h6 class="uxg-h6 uxg-text-primary">Start date:</h6>
+                    <div>{{instrumentDetails.startDate * 1000 | date:'longDate'}}</div>
                 </div>
 
                 <div class="details">

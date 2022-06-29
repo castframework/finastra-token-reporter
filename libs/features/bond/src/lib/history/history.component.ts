@@ -3,6 +3,7 @@ import { History } from '@finastra/api-interfaces';
 
 const COLUMNS: string[] = [
   'notificationName',
+  'date',
   'instrumentAddress',
   'transactionHash',
 ];

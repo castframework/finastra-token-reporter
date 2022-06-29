@@ -6,6 +6,11 @@
       <td mat-cell *matCellDef="let row">{{row.notificationName}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="column"> Event Date </th>
+      <td mat-cell *matCellDef="let row">{{row.date | date:'longDate'}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="instrumentAddress">
       <th mat-header-cell *matHeaderCellDef mat-sort-header scope="column"> Contract address </th>
       <td mat-cell *matCellDef="let row">
