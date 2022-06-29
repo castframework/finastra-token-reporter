@@ -32,18 +32,21 @@ table {
   font-weight: 500;
 
   &.status-SETTLED {
-    background: #d4efda;
+    background: #d4efda5e;
     color: #56c271;
+    border: 1px solid;
   }
 
   &.status-ACKNOWLEDGED {
-    background: #FDF3E5;
+    background: #FDF3E55e;
     color: #ED8B00;
+    border: 1px solid;
   }
 
   &.status-PROCESSED {
-    background: #FFFBE5;
+    background: #FFFBE55e;
     color: #FFD100;
+    border: 1px solid;
   }
 }
 
