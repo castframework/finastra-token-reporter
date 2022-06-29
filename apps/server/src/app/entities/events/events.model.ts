@@ -37,7 +37,7 @@ export class LightSettlementTransactions {
   id: string;
 }
 
-@Schema({ collection: 'cast_events' })
+@Schema({ collection: 'events' })
 @ObjectType({ description: 'events', implements: () => [BaseMeta] })
 export class Event extends BaseMeta {
   @Prop({ type: ContractNotificationSchema })

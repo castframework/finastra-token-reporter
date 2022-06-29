@@ -35,6 +35,16 @@ table {
     background: #d4efda;
     color: #56c271;
   }
+
+  &.status-ACKNOWLEDGED {
+    background: #FDF3E5;
+    color: #ED8B00;
+  }
+
+  &.status-PROCESSED {
+    background: #FFFBE5;
+    color: #FFD100;
+  }
 }
 
 finastra-loader {
