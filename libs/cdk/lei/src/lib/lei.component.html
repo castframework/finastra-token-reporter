@@ -1,2 +1,5 @@
-<ng-container *ngIf="!legalName">{{lei}}</ng-container>
-<ng-container *ngIf="legalName">{{legalName}}</ng-container>
+<a href="https://www.lei-lookup.com/record/{{lei}}" target="_blank" class="uxg-link" [matTooltip]="lei"
+    [matTooltipDisabled]="!lei">
+    <ng-container *ngIf="!legalName">{{lei}}</ng-container>
+    <ng-container *ngIf="legalName">{{legalName}}</ng-container>
+</a>
