@@ -38,5 +38,6 @@ module.exports = {
     '<rootDir>/libs/cdk/loader',
     '<rootDir>/libs/cdk/lei',
     '<rootDir>/libs/cdk/copy-to-clipboard',
+    '<rootDir>/libs/cdk/instrument-currency',
   ],
 };

@@ -1,0 +1,7 @@
+<ng-container *ngIf="currency$ | async as currency; else loading">
+    {{currency}}
+</ng-container>
+
+<ng-template #loading>
+    <uxg-skeleton-text animated></uxg-skeleton-text>
+</ng-template>

@@ -35,6 +35,13 @@
     <td mat-cell *matCellDef="let row"> {{row.maturityDate*1000 | date: 'longDate'}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="currency">
+    <th mat-header-cell *matHeaderCellDef> Currency </th>
+    <td mat-cell *matCellDef="let row">
+      <finastra-instrument-currency [instrumentAddress]="row.contractAddress"></finastra-instrument-currency>
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="interestRateInBips">
     <th mat-header-cell *matHeaderCellDef mat-sort-header scope="column"> Rate (%) </th>
     <td mat-cell *matCellDef="let row"> {{row.interestRateInBips}}% </td>

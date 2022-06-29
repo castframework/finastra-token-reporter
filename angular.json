@@ -119,6 +119,32 @@
       },
       "tags": []
     },
+    "cdk-instrument-currency": {
+      "projectType": "library",
+      "root": "libs/cdk/instrument-currency",
+      "sourceRoot": "libs/cdk/instrument-currency/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk/instrument-currency"],
+          "options": {
+            "jestConfig": "libs/cdk/instrument-currency/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cdk/instrument-currency/src/**/*.ts",
+              "libs/cdk/instrument-currency/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "cdk-lei": {
       "projectType": "library",
       "root": "libs/cdk/lei",
