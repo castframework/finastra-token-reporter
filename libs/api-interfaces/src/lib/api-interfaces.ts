@@ -89,6 +89,7 @@ export type ETH_Address = string;
 export type Currency = string;
 export type UUID = string;
 export type IBAN = string;
+export type ISIN = string;
 export type LEI = string;
 export enum SETTLEMENT_MODELS {
   DIRECT = 'DIRECT',
@@ -109,4 +110,31 @@ export enum SETTLEMENT_TYPES {
   PFOD = 'PFOD',
   DWP = 'DWP',
   FOP = 'FOP',
+}
+
+export interface InstrumentDetails {
+  issuer: ETH_Address;
+  registrarAgentAddress: ETH_Address;
+  settlerAgentAddress: ETH_Address;
+  contractAddress: ETH_Address;
+  initialSupply: number;
+  isinCode: ISIN;
+  name: string;
+  symbol: string;
+  denomination: number;
+  divisor: number;
+  startDate: Date;
+  maturityDate: Date;
+  firstCouponDate: Date;
+  couponFrequencyInMonths: number;
+  interestRateInBips: number;
+  callable: boolean;
+  isSoftBullet: boolean;
+  softBulletPeriodInMonths: number;
+  type: INSTRUMENT_DETAIL_TYPES;
+  ledger: Ledger;
+}
+
+export enum INSTRUMENT_DETAIL_TYPES {
+  BOND = 'Bond',
 }

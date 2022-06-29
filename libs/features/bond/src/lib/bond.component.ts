@@ -2,18 +2,19 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from '@apollo/client/utilities';
+import { InstrumentDetails } from '@finastra/api-interfaces';
 import {
   BlockChainHelpersService,
   EventsService,
   ExportService,
-  NavbarService
+  NavbarService,
 } from '@finastra/shared';
 import { Apollo } from 'apollo-angular';
 import { combineLatest, map, ReplaySubject, switchMap, take, tap } from 'rxjs';
 import {
   GET_INSTRUMENT_DETAILS,
   GET_INSTRUMENT_POSITIONS,
-  GET_SETTLEMENT_TRANSACTIONS
+  GET_SETTLEMENT_TRANSACTIONS,
 } from './bond.gql';
 
 @Component({
@@ -24,7 +25,7 @@ import {
 export class BondComponent implements OnInit {
   instrumentAddress: string;
   ledger: string;
-  instrumentDetails$: Observable<any>;
+  instrumentDetails$: Observable<InstrumentDetails>;
   transactions$: Observable<any>;
   positions$: Observable<any>;
   events$: Observable<any>;
@@ -128,7 +129,9 @@ export class BondComponent implements OnInit {
   }
 
   getHistory(instrumentAddress: string) {
-    return this.eventsService.get(instrumentAddress).pipe(map((arr: any) => arr.map((e: any) => e.contractNotification))) as any;
+    return this.eventsService
+      .get(instrumentAddress)
+      .pipe(map((arr: any) => arr.map((e: any) => e.contractNotification))) as any;
   }
 
   exportPdf() {

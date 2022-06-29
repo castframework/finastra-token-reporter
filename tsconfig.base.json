@@ -19,6 +19,7 @@
     "paths": {
       "@finastra/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@finastra/cdk/bonds-table": ["libs/cdk/bonds-table/src/index.ts"],
+      "@finastra/cdk/copy-to-clipboard": ["libs/cdk/copy-to-clipboard/src/index.ts"],
       "@finastra/cdk/eth-address": ["libs/cdk/eth-address/src/index.ts"],
       "@finastra/cdk/global-search": ["libs/cdk/global-search/src/index.ts"],
       "@finastra/cdk/lei": ["libs/cdk/lei/src/index.ts"],

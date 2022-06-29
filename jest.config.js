@@ -37,5 +37,6 @@ module.exports = {
     '<rootDir>/libs/cdk/eth-address',
     '<rootDir>/libs/cdk/loader',
     '<rootDir>/libs/cdk/lei',
+    '<rootDir>/libs/cdk/copy-to-clipboard',
   ],
 };

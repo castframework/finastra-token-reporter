@@ -1,0 +1,10 @@
+<div class="copy-to-clipboard">
+    <div *ngTemplateOutlet="templateRef"></div>
+
+    <button mat-icon-button [attr.dense]="dense || null" type="button" aria-label="Copy to clipboard"
+        (click)="onClick($event)" class="ml-1" matTooltip="Copy to clipboard" color="neutral">
+        <mat-icon [attr.dense]="dense || null">content_copy</mat-icon>
+    </button>
+    <span (mouseenter)="$event.stopImmediatePropagation()" (mouseleave)="$event.stopImmediatePropagation()"
+        matTooltip="Copied" #tooltip="matTooltip"></span>
+</div>

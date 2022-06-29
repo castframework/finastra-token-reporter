@@ -41,6 +41,32 @@
       },
       "tags": []
     },
+    "cdk-copy-to-clipboard": {
+      "projectType": "library",
+      "root": "libs/cdk/copy-to-clipboard",
+      "sourceRoot": "libs/cdk/copy-to-clipboard/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk/copy-to-clipboard"],
+          "options": {
+            "jestConfig": "libs/cdk/copy-to-clipboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cdk/copy-to-clipboard/src/**/*.ts",
+              "libs/cdk/copy-to-clipboard/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "cdk-eth-address": {
       "projectType": "library",
       "root": "libs/cdk/eth-address",

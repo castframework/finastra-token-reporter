@@ -88,21 +88,24 @@
                 <div class="details">
                     <h6 class="uxg-h6 uxg-text-primary">Contract address:</h6>
                     <div>
-                        <finastra-eth-address [address]="instrumentDetails.contractAddress"></finastra-eth-address>
+                        <finastra-eth-address [address]="instrumentDetails.contractAddress"
+                            *copyToClipboard="instrumentDetails.contractAddress"></finastra-eth-address>
                     </div>
                 </div>
 
                 <div class="details">
                     <h6 class="uxg-h6 uxg-text-primary">Issuer address:</h6>
                     <div>
-                        <finastra-eth-address [address]="instrumentDetails.issuer"></finastra-eth-address>
+                        <finastra-eth-address [address]="instrumentDetails.issuer"
+                            *copyToClipboard="instrumentDetails.issuer"></finastra-eth-address>
                     </div>
                 </div>
 
                 <div class="details">
                     <h6 class="uxg-h6 uxg-text-primary">Registrar agent address:</h6>
                     <div>
-                        <finastra-eth-address [address]="instrumentDetails.registrarAgentAddress">
+                        <finastra-eth-address [address]="instrumentDetails.registrarAgentAddress"
+                            *copyToClipboard="instrumentDetails.registrarAgentAddress">
                         </finastra-eth-address>
                     </div>
                 </div>
@@ -110,7 +113,8 @@
                 <div class="details">
                     <h6 class="uxg-h6 uxg-text-primary">Settler agent address:</h6>
                     <div>
-                        <finastra-eth-address [address]="instrumentDetails.settlerAgentAddress">
+                        <finastra-eth-address [address]="instrumentDetails.settlerAgentAddress"
+                            *copyToClipboard="instrumentDetails.settlerAgentAddress">
                         </finastra-eth-address>
                     </div>
                 </div>
@@ -124,7 +128,8 @@
     <div class="loading">
         <h3 class="uxg-h3">
             <span class="uxg-text-secondary">Bond</span>
-            <uxg-skeleton-text class="uxg-h3" style="width: 260px; height: 18px; border-radius: 16px;" animated></uxg-skeleton-text>
+            <uxg-skeleton-text class="uxg-h3" style="width: 260px; height: 18px; border-radius: 16px;" animated>
+            </uxg-skeleton-text>
         </h3>
 
         <div class="bond-details">
