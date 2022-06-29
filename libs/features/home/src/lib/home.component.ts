@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Bond, Ledger } from '@finastra/api-interfaces';
 import { Apollo } from 'apollo-angular';
-import { forkJoin, map, switchMap } from 'rxjs';
+import { forkJoin, map, of, switchMap } from 'rxjs';
 import { GET_ALL_INSTRUMENTS, GET_INSTRUMENT_DETAILS } from './home.gql';
 import { SearchService } from './search.service';
 
@@ -43,7 +43,9 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     this.getAllInstruments(Ledger.ETHEREUM)
       .pipe(
         switchMap((ids: string[]) =>
-          forkJoin([...ids.map((id) => this.getInstrumentDetails(Ledger.ETHEREUM, id))])
+          ids.length > 0
+            ? forkJoin([...ids.map((id) => this.getInstrumentDetails(Ledger.ETHEREUM, id))])
+            : of([])
         )
       )
       .subscribe((data: Bond[]) => (this.bonds = data));
