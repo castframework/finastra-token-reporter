@@ -9,6 +9,7 @@ import { ProxyConfigService } from '../configs/proxy-config.service';
 import { appFolder, ServeStaticConfigService } from '../configs/serve-static-config.service';
 import { EntitiesModule } from './entities/entities.module';
 import { HealthModule } from './health/health.module';
+import { LeiModule } from './leil/lei.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { HealthModule } from './health/health.module';
     HealthModule,
     LoggerModule,
     EntitiesModule,
+    LeiModule,
   ],
 })
 export class AppModule {}
