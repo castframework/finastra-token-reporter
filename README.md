@@ -80,7 +80,7 @@ The Component Dev Kit (CDK) is a set of components shared accross you project.
 
 Start by creating your cdk lib by running `ng g @nrwl/angular:lib foo --directory=cdk --simpleModuleName`.
 
-And then run `ng g component foo --project=cdk-foo --flat` to generate a new component.
+And then run `ng g component foo --project=cdk-foo --flat --export` to generate a new component.
 
 ### Generate a library
 

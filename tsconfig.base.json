@@ -21,6 +21,7 @@
       "@finastra/cdk/bonds-table": ["libs/cdk/bonds-table/src/index.ts"],
       "@finastra/cdk/eth-address": ["libs/cdk/eth-address/src/index.ts"],
       "@finastra/cdk/global-search": ["libs/cdk/global-search/src/index.ts"],
+      "@finastra/cdk/lei": ["libs/cdk/lei/src/index.ts"],
       "@finastra/cdk/loader": ["libs/cdk/loader/src/index.ts"],
       "@finastra/features/bond": ["libs/features/bond/src/index.ts"],
       "@finastra/features/holder": ["libs/features/holder/src/index.ts"],

@@ -36,5 +36,6 @@ module.exports = {
     '<rootDir>/libs/shared',
     '<rootDir>/libs/cdk/eth-address',
     '<rootDir>/libs/cdk/loader',
+    '<rootDir>/libs/cdk/lei',
   ],
 };

@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { SkeletonTextModule } from '@finastra/angular-components/skeleton-text';
+import { LeiModule } from '@finastra/cdk/lei';
 import { EthAddressModule } from 'libs/cdk/eth-address/src';
 import { LoaderModule } from 'libs/cdk/loader/src';
 import { SharedModule } from 'libs/shared/src';
@@ -36,6 +37,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    LeiModule,
   ],
   declarations: [BondComponent, TransactionsComponent, HoldersComponent, HistoryComponent],
 })

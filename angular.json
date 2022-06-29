@@ -93,6 +93,29 @@
       },
       "tags": []
     },
+    "cdk-lei": {
+      "projectType": "library",
+      "root": "libs/cdk/lei",
+      "sourceRoot": "libs/cdk/lei/src",
+      "prefix": "finastra",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk/lei"],
+          "options": {
+            "jestConfig": "libs/cdk/lei/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/cdk/lei/src/**/*.ts", "libs/cdk/lei/src/**/*.html"]
+          }
+        }
+      },
+      "tags": []
+    },
     "cdk-loader": {
       "projectType": "library",
       "root": "libs/cdk/loader",
