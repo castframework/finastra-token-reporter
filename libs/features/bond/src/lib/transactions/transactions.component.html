@@ -26,7 +26,7 @@
 
         <ng-container matColumnDef="quantity">
             <th mat-header-cell *matHeaderCellDef> Quantity </th>
-            <td mat-cell *matCellDef="let row">{{row.deliveryQuantity}} </td>
+            <td mat-cell *matCellDef="let row">{{row.deliveryQuantity | number}} </td>
         </ng-container>
 
         <ng-container matColumnDef="fiatValue">
