@@ -1,5 +1,5 @@
-<a href="https://www.lei-lookup.com/record/{{lei}}" target="_blank" class="uxg-link" [matTooltip]="lei"
-    [matTooltipDisabled]="!lei">
+<a href="https://www.lei-lookup.com/record/{{lei}}" target="_blank" class="uxg-link"
+    [matTooltip]="lei + ' '  + legalName" [matTooltipDisabled]="!lei">
     <ng-container *ngIf="!legalName">{{lei}}</ng-container>
-    <ng-container *ngIf="legalName">{{legalName}}</ng-container>
+    <ng-container *ngIf="legalName">{{legalName | ethShort:31}}</ng-container>
 </a>
