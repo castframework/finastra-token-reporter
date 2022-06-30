@@ -67,11 +67,11 @@ div.loading {
 section {
   position: absolute;
   width: 100%;
+  height: 240px;
   top: 0;
   left: 0;
   z-index: -999;
 
-  padding: fds.$uxg-spacing-6 fds.$uxg-spacing-5 128px fds.$uxg-spacing-5;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   color: white;
@@ -556,7 +556,6 @@ section {
 }
 
 :host {
-
   h3,
   h4 {
     //text-transform: uppercase;
