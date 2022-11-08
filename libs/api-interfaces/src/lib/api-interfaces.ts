@@ -131,8 +131,6 @@ export interface InstrumentDetails {
   callable: boolean;
   isSoftBullet: boolean;
   softBulletPeriodInMonths: number;
-  type: INSTRUMENT_DETAIL_TYPES;
-  ledger: Ledger;
 }
 
 export enum INSTRUMENT_DETAIL_TYPES {

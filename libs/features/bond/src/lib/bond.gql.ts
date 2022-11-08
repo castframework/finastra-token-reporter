@@ -21,7 +21,6 @@ export const GET_INSTRUMENT_DETAILS = gql`
       callable
       isSoftBullet
       softBulletPeriodInMonths
-      type
     }
   }
 `;

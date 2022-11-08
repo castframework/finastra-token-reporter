@@ -10,7 +10,6 @@ export const GET_INSTRUMENT_DETAILS_SHORT = gql`
   query GetInstrumentDetails($ledger: Ledger!, $contractAddress: String!) {
     getInstrumentDetails(instrumentLedger: $ledger, contractAddress: $contractAddress) {
       name
-      type
     }
   }
 `;
